@@ -66,8 +66,12 @@ const translations = {
         
         // Payment (Pembayaran)
         'payment.title': 'Pembayaran Pajak',
-        'payment.select_tax': 'Pilih Jenis Pajak',
-        'payment.choose_tax': 'Pilih jenis pajak',
+        'payment.subtitle': 'Lakukan pembayaran pajak Anda dengan mudah dan aman',
+        'payment.info': 'Informasi',
+        'payment.info_text': 'Pastikan semua data yang Anda masukkan sudah benar. Pembayaran yang sudah diproses tidak dapat dibatalkan.',
+        'payment.tax_data': 'Data Pajak',
+        'payment.select_tax': 'Jenis Pajak',
+        'payment.choose_tax': 'Pilih Jenis Pajak',
         'payment.tax_amount': 'Jumlah Pajak',
         'payment.enter_amount': 'Masukkan jumlah',
         'payment.payment_method': 'Metode Pembayaran',
@@ -79,6 +83,12 @@ const translations = {
         'payment.submit': 'Bayar Sekarang',
         'payment.cancel': 'Batal',
         'payment.processing': 'Memproses...',
+        'payment.for_user': 'Pembayaran untuk',
+        'payment.select_user': 'Pilih Pengguna',
+        'payment.choose_user': 'Pilih Pengguna',
+        'payment.or_manual': 'Atau Input Manual NPWP',
+        'payment.manual_npwp': 'Input NPWP Manual',
+        'payment.enter_npwp': 'Masukkan NPWP',
         
         // History (Riwayat)
         'history.title': 'Riwayat Pembayaran',
@@ -261,8 +271,12 @@ const translations = {
         
         // Payment
         'payment.title': 'Tax Payment',
-        'payment.select_tax': 'Select Tax Type',
-        'payment.choose_tax': 'Choose tax type',
+        'payment.subtitle': 'Pay your taxes easily and securely',
+        'payment.info': 'Information',
+        'payment.info_text': 'Make sure all the data you enter is correct. Processed payments cannot be cancelled.',
+        'payment.tax_data': 'Tax Data',
+        'payment.select_tax': 'Tax Type',
+        'payment.choose_tax': 'Select Tax Type',
         'payment.tax_amount': 'Tax Amount',
         'payment.enter_amount': 'Enter amount',
         'payment.payment_method': 'Payment Method',
@@ -274,6 +288,12 @@ const translations = {
         'payment.submit': 'Pay Now',
         'payment.cancel': 'Cancel',
         'payment.processing': 'Processing...',
+        'payment.for_user': 'Payment for',
+        'payment.select_user': 'Select User',
+        'payment.choose_user': 'Select User',
+        'payment.or_manual': 'Or Manual NPWP Input',
+        'payment.manual_npwp': 'Manual NPWP Input',
+        'payment.enter_npwp': 'Enter NPWP',
         
         // History
         'history.title': 'Payment History',

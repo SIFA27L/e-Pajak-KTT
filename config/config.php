@@ -3,8 +3,7 @@
 session_start();
 
 // Session Timeout Configuration (in seconds)
-define('SESSION_TIMEOUT', 1800); // 30 minutes = 1800 seconds
-
+define('SESSION_TIMEOUT', 300); 
 // Check session timeout
 if (isset($_SESSION['LAST_ACTIVITY'])) {
     $inactive_time = time() - $_SESSION['LAST_ACTIVITY'];

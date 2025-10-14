@@ -9,6 +9,14 @@ $conn = $db->getConnection();
 $stmt = $conn->prepare("SELECT * FROM jenis_pajak WHERE status = 'active' ORDER BY nama_pajak");
 $stmt->execute();
 $jenisPajak = $stmt->fetchAll();
+
+// Get all users if admin (for admin to select other users)
+$users = [];
+if (isAdmin()) {
+    $stmt = $conn->prepare("SELECT id, full_name, npwp, email FROM users WHERE status = 'active' ORDER BY full_name");
+    $stmt->execute();
+    $users = $stmt->fetchAll();
+}
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -140,6 +148,33 @@ $jenisPajak = $stmt->fetchAll();
                         <i class="fas fa-file-invoice"></i> <span data-i18n="payment.tax_data">Data Pajak</span>
                     </h3>
 
+                    <?php if (isAdmin()): ?>
+                    <!-- Admin can select user or input manual NPWP -->
+                    <div class="form-group">
+                        <label for="payment_for"><span data-i18n="payment.for_user">Pembayaran untuk</span> <span class="required">*</span></label>
+                        <select class="form-control" id="payment_for" name="payment_for" required>
+                            <option value="self">Akun Sendiri (<?php echo $_SESSION['full_name']; ?>)</option>
+                            <option value="other_user" data-i18n="payment.select_user">Pilih Pengguna Lain</option>
+                            <option value="manual" data-i18n="payment.manual_npwp">Input NPWP Manual</option>
+                        </select>
+                    </div>
+
+                    <!-- Dropdown for selecting other users (hidden by default) -->
+                    <div class="form-group" id="user_select_wrapper" style="display: none;">
+                        <label for="selected_user_id"><span data-i18n="payment.choose_user">Pilih Pengguna</span> <span class="required">*</span></label>
+                        <select class="form-control" id="selected_user_id" name="selected_user_id">
+                            <option value="">-- Pilih Pengguna --</option>
+                            <?php foreach ($users as $user): ?>
+                            <option value="<?php echo $user['id']; ?>" 
+                                    data-npwp="<?php echo htmlspecialchars($user['npwp']); ?>"
+                                    data-name="<?php echo htmlspecialchars($user['full_name']); ?>">
+                                <?php echo htmlspecialchars($user['full_name']); ?> - <?php echo htmlspecialchars($user['npwp']); ?>
+                            </option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                    <?php endif; ?>
+
                     <div class="form-group">
                         <label for="jenis_pajak_id"><span data-i18n="payment.select_tax">Jenis Pajak</span> <span class="required">*</span></label>
                         <select class="form-control" id="jenis_pajak_id" name="jenis_pajak_id" required>
@@ -155,7 +190,11 @@ $jenisPajak = $stmt->fetchAll();
                     <div class="form-row">
                         <div class="form-group">
                             <label for="npwp">NPWP <span class="required">*</span></label>
-                            <input type="text" class="form-control" id="npwp" name="npwp" value="<?php echo $_SESSION['npwp']; ?>" readonly>
+                            <input type="text" class="form-control" id="npwp" name="npwp" 
+                                   value="<?php echo $_SESSION['npwp']; ?>" 
+                                   <?php echo !isAdmin() ? 'readonly' : ''; ?> 
+                                   required 
+                                   placeholder="<?php echo isAdmin() ? 'NPWP akan terisi otomatis atau input manual' : ''; ?>">
                         </div>
 
                         <div class="form-group">
@@ -236,6 +275,53 @@ $jenisPajak = $stmt->fetchAll();
     </div>
 
     <script>
+        // Admin payment for selection handler
+        <?php if (isAdmin()): ?>
+        const paymentForSelect = document.getElementById('payment_for');
+        const userSelectWrapper = document.getElementById('user_select_wrapper');
+        const selectedUserIdSelect = document.getElementById('selected_user_id');
+        const npwpInput = document.getElementById('npwp');
+        const originalNpwp = '<?php echo $_SESSION['npwp']; ?>';
+
+        if (paymentForSelect) {
+            paymentForSelect.addEventListener('change', function() {
+                const value = this.value;
+                
+                if (value === 'self') {
+                    // Self payment - use own NPWP
+                    userSelectWrapper.style.display = 'none';
+                    selectedUserIdSelect.required = false;
+                    npwpInput.value = originalNpwp;
+                    npwpInput.readOnly = true;
+                } else if (value === 'other_user') {
+                    // Select other user
+                    userSelectWrapper.style.display = 'block';
+                    selectedUserIdSelect.required = true;
+                    npwpInput.value = '';
+                    npwpInput.readOnly = true;
+                } else if (value === 'manual') {
+                    // Manual NPWP input
+                    userSelectWrapper.style.display = 'none';
+                    selectedUserIdSelect.required = false;
+                    npwpInput.value = '';
+                    npwpInput.readOnly = false;
+                    npwpInput.focus();
+                }
+            });
+
+            // Handle user selection
+            selectedUserIdSelect.addEventListener('change', function() {
+                const selectedOption = this.options[this.selectedIndex];
+                if (selectedOption.value) {
+                    const npwp = selectedOption.getAttribute('data-npwp');
+                    npwpInput.value = npwp;
+                } else {
+                    npwpInput.value = '';
+                }
+            });
+        }
+        <?php endif; ?>
+
         // Calculate total
         function calculateTotal() {
             const jumlahPajak = parseFloat(document.getElementById('jumlah_pajak').value) || 0;

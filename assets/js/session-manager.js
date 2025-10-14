@@ -6,9 +6,9 @@
 class SessionManager {
     constructor(options = {}) {
         // Configuration (in seconds)
-        this.timeout = options.timeout || 1800; // 30 minutes default
-        this.warningTime = options.warningTime || 300; // 5 minutes before timeout
-        this.checkInterval = options.checkInterval || 60000; // Check every 1 minute
+        this.timeout = options.timeout || 300; 
+        this.warningTime = options.warningTime || 250; 
+        this.checkInterval = options.checkInterval || 60; 
         
         // State
         this.lastActivity = Date.now();
