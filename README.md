@@ -205,16 +205,8 @@ Sistem sudah siap diintegrasikan dengan:
 
 ## 👨‍💻 Developer
 
-Developed with ❤️ by KTT Indonesia IT Team
+Developed with 💥 by KTT Indonesia IT Team
 
 ---
 
-**Catatan:** Sistem ini dibuat untuk keperluan edukasi dan demo. Untuk implementasi production, disarankan menambahkan:
-- SSL Certificate (HTTPS)
-- Enhanced security measures
-- Email verification
-- Real payment gateway integration
-- Backup & recovery system
-- Logging system
-- Rate limiting
-- CAPTCHA untuk login/register
+**Catatan:** Sistem ini dibuat untuk keperluan edukasi dan demo tugas di Kampus UNINDRA dari TIM KTT.
