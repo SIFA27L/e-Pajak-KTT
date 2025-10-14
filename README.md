@@ -187,33 +187,11 @@ Sistem sudah siap diintegrasikan dengan:
 - Cek username dan password
 - Pastikan akun status 'active'
 
-## 📞 Informasi Kontak PT KTT Indonesia
-
-- **Alamat:** Jl. Sudirman No. 123, Jakarta Pusat 10220, Indonesia
-- **Telepon:** (021) 1234-5678
-- **Email:** info@kttindonesia.com
-- **Website:** www.kttindonesia.com
-- **Jam Operasional:**
-  - Senin - Jumat: 08:00 - 17:00 WIB
-  - Sabtu: 08:00 - 12:00 WIB
-  - Minggu & Libur: Tutup
-
-## 📝 License
-
-© 2025 PT KTT Indonesia. All Rights Reserved.
 
 ## 👨‍💻 Developer
 
-Developed with ❤️ by KTT Indonesia IT Team
+Developed with 💥 by KTT Indonesia IT Team
 
 ---
 
-**Catatan:** Sistem ini dibuat untuk keperluan edukasi dan demo. Untuk implementasi production, disarankan menambahkan:
-- SSL Certificate (HTTPS)
-- Enhanced security measures
-- Email verification
-- Real payment gateway integration
-- Backup & recovery system
-- Logging system
-- Rate limiting
-- CAPTCHA untuk login/register
+**Catatan:** Sistem ini dibuat untuk keperluan edukasi dan demo tugas di Kampus UNINDRA dari TIM KTT.
