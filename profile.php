@@ -258,8 +258,8 @@ if (isset($_POST['change_password'])) {
         
         <div class="content-wrapper">
             <div class="page-header">
-                <h1>Profil Saya</h1>
-                <p>Kelola informasi profil dan keamanan akun Anda</p>
+                <h1 data-i18n="profile.title">Profil Saya</h1>
+                <p data-i18n="profile.subtitle">Kelola informasi profil dan keamanan akun Anda</p>
             </div>
 
             <div class="profile-container">
@@ -276,7 +276,7 @@ if (isset($_POST['change_password'])) {
                         <div style="font-weight: 600; color: #1f2937;"><?php echo $user['npwp']; ?></div>
                     </div>
                     <div style="font-size: 0.85rem; color: #6b7280;">
-                        <i class="fas fa-calendar"></i> Bergabung sejak<br>
+                        <i class="fas fa-calendar"></i> <span data-i18n="profile.member_since">Bergabung sejak</span><br>
                         <strong><?php echo formatDate($user['created_at']); ?></strong>
                     </div>
                 </div>
@@ -291,10 +291,12 @@ if (isset($_POST['change_password'])) {
 
                     <div class="tabs">
                         <button class="tab active" onclick="showTab('profile')">
-                            <i class="fas fa-user"></i> Informasi Profil
+                            <i class="fas fa-user"></i>
+                            <span data-i18n="profile.personal_info">Informasi Profil</span>
                         </button>
                         <button class="tab" onclick="showTab('security')">
-                            <i class="fas fa-lock"></i> Keamanan
+                            <i class="fas fa-lock"></i>
+                            <span data-i18n="profile.security">Keamanan</span>
                         </button>
                     </div>
 
@@ -302,40 +304,41 @@ if (isset($_POST['change_password'])) {
                         <form method="POST">
                             <div class="form-row">
                                 <div class="form-group">
-                                    <label>Username</label>
+                                    <label data-i18n="profile.username">Username</label>
                                     <input type="text" class="form-control" value="<?php echo $user['username']; ?>" readonly>
                                 </div>
 
                                 <div class="form-group">
-                                    <label>NIK</label>
+                                    <label data-i18n="profile.id_number">NIK</label>
                                     <input type="text" class="form-control" value="<?php echo $user['nik']; ?>" readonly>
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label>Nama Lengkap</label>
+                                <label data-i18n="profile.full_name">Nama Lengkap</label>
                                 <input type="text" class="form-control" name="full_name" value="<?php echo $user['full_name']; ?>" required>
                             </div>
 
                             <div class="form-row">
                                 <div class="form-group">
-                                    <label>Email</label>
+                                    <label data-i18n="profile.email">Email</label>
                                     <input type="email" class="form-control" name="email" value="<?php echo $user['email']; ?>" required>
                                 </div>
 
                                 <div class="form-group">
-                                    <label>No. Telepon</label>
+                                    <label data-i18n="profile.phone">No. Telepon</label>
                                     <input type="tel" class="form-control" name="phone" value="<?php echo $user['phone']; ?>" required>
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label>Alamat</label>
+                                <label data-i18n="profile.address">Alamat</label>
                                 <textarea class="form-control" name="address" rows="3" required><?php echo $user['address']; ?></textarea>
                             </div>
 
                             <button type="submit" class="btn-primary">
-                                <i class="fas fa-save"></i> Simpan Perubahan
+                                <i class="fas fa-save"></i>
+                                <span data-i18n="profile.save">Simpan Perubahan</span>
                             </button>
                         </form>
                     </div>
@@ -345,22 +348,23 @@ if (isset($_POST['change_password'])) {
                             <input type="hidden" name="change_password" value="1">
                             
                             <div class="form-group">
-                                <label>Password Lama</label>
+                                <label data-i18n="profile.old_password">Password Lama</label>
                                 <input type="password" class="form-control" name="current_password" required>
                             </div>
 
                             <div class="form-group">
-                                <label>Password Baru</label>
+                                <label data-i18n="profile.new_password">Password Baru</label>
                                 <input type="password" class="form-control" name="new_password" required>
                             </div>
 
                             <div class="form-group">
-                                <label>Konfirmasi Password Baru</label>
+                                <label data-i18n="profile.confirm_password">Konfirmasi Password Baru</label>
                                 <input type="password" class="form-control" name="confirm_password" required>
                             </div>
 
                             <button type="submit" class="btn-primary">
-                                <i class="fas fa-key"></i> Ubah Password
+                                <i class="fas fa-key"></i>
+                                <span data-i18n="profile.change_password_btn">Ubah Password</span>
                             </button>
                         </form>
                     </div>

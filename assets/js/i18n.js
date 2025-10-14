@@ -128,17 +128,22 @@ const translations = {
         
         // Profile (Profil)
         'profile.title': 'Profil Saya',
-        'profile.personal_info': 'Informasi Pribadi',
+        'profile.subtitle': 'Kelola informasi profil dan keamanan akun Anda',
+        'profile.personal_info': 'Informasi Profil',
+        'profile.security': 'Keamanan',
+        'profile.member_since': 'Bergabung sejak',
+        'profile.username': 'Username',
         'profile.full_name': 'Nama Lengkap',
         'profile.email': 'Email',
-        'profile.phone': 'Nomor Telepon',
+        'profile.phone': 'No. Telepon',
         'profile.address': 'Alamat',
         'profile.id_number': 'NIK',
         'profile.tax_number': 'NPWP',
         'profile.change_password': 'Ubah Password',
+        'profile.change_password_btn': 'Ubah Password',
         'profile.old_password': 'Password Lama',
         'profile.new_password': 'Password Baru',
-        'profile.confirm_password': 'Konfirmasi Password',
+        'profile.confirm_password': 'Konfirmasi Password Baru',
         'profile.save': 'Simpan Perubahan',
         'profile.cancel': 'Batal',
         
@@ -361,7 +366,11 @@ const translations = {
         
         // Profile
         'profile.title': 'My Profile',
-        'profile.personal_info': 'Personal Information',
+        'profile.subtitle': 'Manage your profile information and account security',
+        'profile.personal_info': 'Profile Information',
+        'profile.security': 'Security',
+        'profile.member_since': 'Member since',
+        'profile.username': 'Username',
         'profile.full_name': 'Full Name',
         'profile.email': 'Email',
         'profile.phone': 'Phone Number',
@@ -369,9 +378,10 @@ const translations = {
         'profile.id_number': 'ID Number',
         'profile.tax_number': 'Tax Number',
         'profile.change_password': 'Change Password',
+        'profile.change_password_btn': 'Change Password',
         'profile.old_password': 'Old Password',
         'profile.new_password': 'New Password',
-        'profile.confirm_password': 'Confirm Password',
+        'profile.confirm_password': 'Confirm New Password',
         'profile.save': 'Save Changes',
         'profile.cancel': 'Cancel',
         
@@ -548,11 +558,16 @@ class I18n {
             if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
                 element.placeholder = translation;
             } else {
-                // Keep icons if present
-                const icon = element.querySelector('i');
-                if (icon) {
+                // Check if element has direct icon children
+                const hasDirectIcon = Array.from(element.childNodes).some(
+                    node => node.nodeType === 1 && node.tagName === 'I'
+                );
+                
+                if (hasDirectIcon) {
+                    // Preserve all icon elements
+                    const icons = Array.from(element.children).filter(child => child.tagName === 'I');
                     element.innerHTML = '';
-                    element.appendChild(icon.cloneNode(true));
+                    icons.forEach(icon => element.appendChild(icon));
                     element.appendChild(document.createTextNode(' ' + translation));
                 } else {
                     element.textContent = translation;

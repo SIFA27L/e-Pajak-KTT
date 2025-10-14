@@ -138,14 +138,15 @@ if (isAdmin()) {
             <div class="form-card">
                 <div class="info-box">
                     <i class="fas fa-info-circle"></i>
-                    <strong data-i18n="payment.info">Informasi:</strong> <span data-i18n="payment.info_text">Pastikan semua data yang Anda masukkan sudah benar. Pembayaran yang sudah diproses tidak dapat dibatalkan.</span>
+                    <strong><span data-i18n="payment.info">Informasi</span>:</strong> <span data-i18n="payment.info_text">Pastikan semua data yang Anda masukkan sudah benar. Pembayaran yang sudah diproses tidak dapat dibatalkan.</span>
                 </div>
 
                 <div id="alert" class="alert"></div>
 
                 <form id="paymentForm" method="POST">
                     <h3 style="margin-bottom: 20px; color: #059669;">
-                        <i class="fas fa-file-invoice"></i> <span data-i18n="payment.tax_data">Data Pajak</span>
+                        <i class="fas fa-file-invoice"></i>
+                        <span data-i18n="payment.tax_data">Data Pajak</span>
                     </h3>
 
                     <?php if (isAdmin()): ?>
