@@ -1,6 +1,13 @@
 <!-- Load i18n before other scripts -->
 <script src="assets/js/i18n.js"></script>
 
+<!-- Session Manager for auto-logout -->
+<script>
+    // Mark this as a protected page
+    var isProtectedPage = true;
+</script>
+<script src="assets/js/session-manager.js"></script>
+
 <header class="header">
     <div class="header-left">
         <button class="menu-toggle" id="menuToggle">

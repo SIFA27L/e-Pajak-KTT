@@ -2,6 +2,36 @@
 // General Configuration
 session_start();
 
+// Session Timeout Configuration (in seconds)
+define('SESSION_TIMEOUT', 1800); // 30 minutes = 1800 seconds
+
+// Check session timeout
+if (isset($_SESSION['LAST_ACTIVITY'])) {
+    $inactive_time = time() - $_SESSION['LAST_ACTIVITY'];
+    if ($inactive_time > SESSION_TIMEOUT) {
+        // Session expired
+        session_unset();
+        session_destroy();
+        
+        // Set flash message for timeout
+        session_start();
+        $_SESSION['timeout_message'] = 'Sesi Anda telah berakhir karena tidak aktif. Silakan login kembali.';
+        header("Location: login.php");
+        exit();
+    }
+}
+
+// Update last activity time
+if (isset($_SESSION['user_id'])) {
+    $_SESSION['LAST_ACTIVITY'] = time();
+}
+
+// Prevent browser cache
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache");
+header("Expires: Sat, 26 Jul 1997 05:00:00 GMT");
+
 // Base URL
 define('BASE_URL', 'http://localhost/e-commerce/');
 
@@ -37,8 +67,21 @@ function isLoggedIn() {
 }
 
 function requireLogin() {
+    // Prevent browser cache on protected pages
+    header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+    header("Pragma: no-cache");
+    
     if (!isLoggedIn()) {
-        redirect('login.php');
+        // Clear any existing session data
+        session_unset();
+        session_destroy();
+        
+        // Start new session for message
+        session_start();
+        $_SESSION['login_required'] = 'Silakan login untuk mengakses halaman ini.';
+        
+        header("Location: login.php");
+        exit();
     }
 }
 

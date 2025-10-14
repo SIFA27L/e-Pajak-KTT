@@ -1,8 +1,36 @@
+<?php
+session_start();
+
+// Prevent caching
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache");
+header("Expires: Sat, 26 Jul 1997 05:00:00 GMT");
+
+// If already logged in, redirect to dashboard
+if (isset($_SESSION['user_id']) && !empty($_SESSION['user_id'])) {
+    header("Location: dashboard.php");
+    exit();
+}
+
+// Get messages
+$timeout_message = isset($_SESSION['timeout_message']) ? $_SESSION['timeout_message'] : '';
+$login_required = isset($_SESSION['login_required']) ? $_SESSION['login_required'] : '';
+$logout_message = isset($_SESSION['logout_message']) ? $_SESSION['logout_message'] : '';
+
+// Clear messages after displaying
+unset($_SESSION['timeout_message']);
+unset($_SESSION['login_required']);
+unset($_SESSION['logout_message']);
+?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <title>Login - KTT Indonesia Tax Payment System</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -159,18 +187,38 @@
             border-radius: 10px;
             margin-bottom: 20px;
             display: none;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .alert i {
+            font-size: 1.2rem;
         }
 
         .alert-error {
-            background: #fee;
-            color: #c33;
-            border: 1px solid #fcc;
+            background: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #fecaca;
         }
 
         .alert-success {
-            background: #efe;
-            color: #3c3;
-            border: 1px solid #cfc;
+            background: #d1fae5;
+            color: #065f46;
+            border: 1px solid #a7f3d0;
+        }
+
+        .alert-warning {
+            background: #fef3c7;
+            color: #92400e;
+            border: 1px solid #fde68a;
+        }
+
+        .alert-info {
+            background: #dbeafe;
+            color: #1e40af;
+            border: 1px solid #bfdbfe;
         }
 
         @media (max-width: 768px) {
@@ -206,6 +254,27 @@
             </div>
 
             <div id="alert" class="alert"></div>
+
+            <?php if (!empty($timeout_message)): ?>
+            <div class="alert alert-warning" style="display: block;">
+                <i class="fas fa-clock"></i>
+                <?php echo htmlspecialchars($timeout_message); ?>
+            </div>
+            <?php endif; ?>
+
+            <?php if (!empty($login_required)): ?>
+            <div class="alert alert-info" style="display: block;">
+                <i class="fas fa-info-circle"></i>
+                <?php echo htmlspecialchars($login_required); ?>
+            </div>
+            <?php endif; ?>
+
+            <?php if (!empty($logout_message)): ?>
+            <div class="alert alert-success" style="display: block;">
+                <i class="fas fa-check-circle"></i>
+                <?php echo htmlspecialchars($logout_message); ?>
+            </div>
+            <?php endif; ?>
 
             <form id="loginForm" method="POST">
                 <div class="form-group">
