@@ -164,6 +164,103 @@ $payments = $stmt->fetchAll();
         .detail-value {
             color: #6b7280;
         }
+
+        /* Button payment action base */
+        .btn-payment-action {
+            margin-top: 20px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            white-space: nowrap;
+        }
+
+        /* Responsive button optimization for mobile */
+        @media (max-width: 768px) {
+            .btn-payment-action,
+            .empty-state .btn-primary {
+                padding: 8px 12px !important;
+                font-size: 0.85rem !important;
+                max-width: 200px;
+                min-width: auto;
+                width: auto;
+                height: auto;
+                line-height: 1.3;
+            }
+
+            .btn-payment-action i,
+            .empty-state .btn-primary i {
+                font-size: 0.85rem;
+            }
+
+            .filter-bar .btn-primary {
+                padding: 8px 12px !important;
+                font-size: 0.85rem !important;
+                width: auto;
+                flex-shrink: 0;
+            }
+
+            .filter-bar {
+                padding: 15px;
+                justify-content: center;
+            }
+
+            .empty-state i.fa-inbox {
+                font-size: 3rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .btn-payment-action,
+            .empty-state .btn-primary {
+                padding: 7px 10px !important;
+                font-size: 0.78rem !important;
+                max-width: 170px;
+                gap: 5px;
+            }
+
+            .btn-payment-action i,
+            .empty-state .btn-primary i {
+                font-size: 0.78rem;
+            }
+
+            .filter-bar .btn-primary {
+                padding: 7px 10px !important;
+                font-size: 0.78rem !important;
+            }
+
+            .empty-state h3 {
+                font-size: 1.1rem;
+            }
+
+            .empty-state p {
+                font-size: 0.85rem;
+            }
+
+            .empty-state i.fa-inbox {
+                font-size: 2.5rem;
+            }
+        }
+
+        /* Landscape mobile optimization */
+        @media (max-width: 1024px) and (orientation: landscape) {
+            .btn-payment-action,
+            .empty-state .btn-primary {
+                padding: 7px 12px !important;
+                font-size: 0.8rem !important;
+                max-width: 200px;
+            }
+
+            .btn-payment-action i,
+            .empty-state .btn-primary i {
+                font-size: 0.8rem;
+            }
+
+            .filter-bar .btn-primary {
+                padding: 7px 12px !important;
+                font-size: 0.8rem !important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -262,7 +359,7 @@ $payments = $stmt->fetchAll();
                     <i class="fas fa-inbox"></i>
                     <h3>Belum Ada Riwayat Pembayaran</h3>
                     <p>Anda belum melakukan pembayaran pajak. Klik tombol di bawah untuk melakukan pembayaran.</p>
-                    <button class="btn-primary" style="margin-top: 20px;" onclick="window.location.href='pembayaran.php'">
+                    <button class="btn-primary btn-payment-action" onclick="window.location.href='pembayaran.php'">
                         <i class="fas fa-plus"></i> Bayar Pajak Sekarang
                     </button>
                 </div>

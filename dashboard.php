@@ -129,8 +129,8 @@ $pajakDistribution = $stmt->fetchAll();
         
         <div class="content-wrapper">
             <div class="page-header">
-                <h1>Dashboard</h1>
-                <p>Selamat datang di Sistem Pembayaran Pajak KTT Indonesia</p>
+                <h1 data-i18n="dashboard.title">Dashboard</h1>
+                <p data-i18n="dashboard.welcome">Selamat datang di Sistem Pembayaran Pajak KTT Indonesia</p>
             </div>
 
             <!-- Statistics Cards -->
@@ -141,7 +141,7 @@ $pajakDistribution = $stmt->fetchAll();
                     </div>
                     <div class="stat-details">
                         <h3><?php echo number_format($totalPembayaran); ?></h3>
-                        <p>Total Pembayaran</p>
+                        <p data-i18n="dashboard.total_payment">Total Pembayaran</p>
                     </div>
                 </div>
 
@@ -151,7 +151,7 @@ $pajakDistribution = $stmt->fetchAll();
                     </div>
                     <div class="stat-details">
                         <h3><?php echo number_format($totalBerhasil); ?></h3>
-                        <p>Pembayaran Berhasil</p>
+                        <p data-i18n="dashboard.paid">Pembayaran Berhasil</p>
                     </div>
                 </div>
 
@@ -161,7 +161,7 @@ $pajakDistribution = $stmt->fetchAll();
                     </div>
                     <div class="stat-details">
                         <h3><?php echo formatRupiah($totalNominal); ?></h3>
-                        <p>Total Nominal</p>
+                        <p data-i18n="dashboard.total_amount">Total Nominal</p>
                     </div>
                 </div>
 
@@ -171,7 +171,7 @@ $pajakDistribution = $stmt->fetchAll();
                     </div>
                     <div class="stat-details">
                         <h3><?php echo number_format($totalPending); ?></h3>
-                        <p>Menunggu Pembayaran</p>
+                        <p data-i18n="dashboard.pending">Menunggu Pembayaran</p>
                     </div>
                 </div>
             </div>
@@ -180,7 +180,7 @@ $pajakDistribution = $stmt->fetchAll();
             <div class="chart-grid">
                 <div class="chart-card">
                     <div class="chart-header">
-                        <h3>Statistik Pembayaran Bulanan</h3>
+                        <h3 data-i18n="dashboard.monthly_stats">Statistik Pembayaran Bulanan</h3>
                     </div>
                     <div class="chart-body">
                         <canvas id="monthlyChart"></canvas>
@@ -189,7 +189,7 @@ $pajakDistribution = $stmt->fetchAll();
 
                 <div class="chart-card">
                     <div class="chart-header">
-                        <h3>Distribusi Jenis Pajak</h3>
+                        <h3 data-i18n="dashboard.tax_distribution">Distribusi Jenis Pajak</h3>
                     </div>
                     <div class="chart-body">
                         <canvas id="pajakChart"></canvas>
@@ -200,23 +200,25 @@ $pajakDistribution = $stmt->fetchAll();
             <!-- Recent Payments Table -->
             <div class="table-card">
                 <div class="table-header">
-                    <h3>Pembayaran Terbaru</h3>
-                    <a href="pembayaran.php" class="btn-primary">Lihat Semua</a>
+                    <h3 data-i18n="dashboard.recent_payments">Pembayaran Terbaru</h3>
+                    <a href="pembayaran.php" class="btn-primary">
+                        <span data-i18n="dashboard.view_all">Lihat Semua</span>
+                    </a>
                 </div>
                 <div class="table-responsive">
                     <table class="data-table">
                         <thead>
                             <tr>
-                                <th>No. Pembayaran</th>
+                                <th data-i18n="dashboard.payment_no">No. Pembayaran</th>
                                 <?php if ($role === 'superadmin'): ?>
-                                <th>Nama</th>
+                                <th data-i18n="users.name">Nama</th>
                                 <?php endif; ?>
-                                <th>Jenis Pajak</th>
+                                <th data-i18n="history.tax_type">Jenis Pajak</th>
                                 <th>NPWP</th>
-                                <th>Periode</th>
-                                <th>Jumlah</th>
-                                <th>Status</th>
-                                <th>Tanggal</th>
+                                <th data-i18n="dashboard.period">Periode</th>
+                                <th data-i18n="history.amount">Jumlah</th>
+                                <th data-i18n="history.status">Status</th>
+                                <th data-i18n="history.date">Tanggal</th>
                             </tr>
                         </thead>
                         <tbody>

@@ -123,27 +123,27 @@ $jenisPajak = $stmt->fetchAll();
         
         <div class="content-wrapper">
             <div class="page-header">
-                <h1>Pembayaran Pajak</h1>
-                <p>Lakukan pembayaran pajak Anda dengan mudah dan aman</p>
+                <h1 data-i18n="payment.title">Pembayaran Pajak</h1>
+                <p data-i18n="payment.subtitle">Lakukan pembayaran pajak Anda dengan mudah dan aman</p>
             </div>
 
             <div class="form-card">
                 <div class="info-box">
                     <i class="fas fa-info-circle"></i>
-                    <strong>Informasi:</strong> Pastikan semua data yang Anda masukkan sudah benar. Pembayaran yang sudah diproses tidak dapat dibatalkan.
+                    <strong data-i18n="payment.info">Informasi:</strong> <span data-i18n="payment.info_text">Pastikan semua data yang Anda masukkan sudah benar. Pembayaran yang sudah diproses tidak dapat dibatalkan.</span>
                 </div>
 
                 <div id="alert" class="alert"></div>
 
                 <form id="paymentForm" method="POST">
                     <h3 style="margin-bottom: 20px; color: #059669;">
-                        <i class="fas fa-file-invoice"></i> Data Pajak
+                        <i class="fas fa-file-invoice"></i> <span data-i18n="payment.tax_data">Data Pajak</span>
                     </h3>
 
                     <div class="form-group">
-                        <label for="jenis_pajak_id">Jenis Pajak <span class="required">*</span></label>
+                        <label for="jenis_pajak_id"><span data-i18n="payment.select_tax">Jenis Pajak</span> <span class="required">*</span></label>
                         <select class="form-control" id="jenis_pajak_id" name="jenis_pajak_id" required>
-                            <option value="">Pilih Jenis Pajak</option>
+                            <option value="" data-i18n="payment.choose_tax">Pilih Jenis Pajak</option>
                             <?php foreach ($jenisPajak as $jp): ?>
                             <option value="<?php echo $jp['id']; ?>" data-persentase="<?php echo $jp['persentase']; ?>">
                                 <?php echo $jp['kode_pajak']; ?> - <?php echo $jp['nama_pajak']; ?>

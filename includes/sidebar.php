@@ -2,7 +2,7 @@
     <div class="sidebar-header">
         <div class="logo">
             <i class="fas fa-landmark"></i>
-            <span>KTT Indonesia</span>
+            <span class="logo-text">KTT Indonesia</span>
         </div>
         <button class="sidebar-toggle" id="sidebarToggle">
             <i class="fas fa-times"></i>
@@ -22,37 +22,37 @@
     <nav class="sidebar-menu">
         <ul>
             <li class="<?php echo basename($_SERVER['PHP_SELF']) == 'dashboard.php' ? 'active' : ''; ?>">
-                <a href="dashboard.php">
+                <a href="dashboard.php" data-i18n-title="menu.dashboard">
                     <i class="fas fa-tachometer-alt"></i>
-                    <span>Dashboard</span>
+                    <span data-i18n="menu.dashboard">Dashboard</span>
                 </a>
             </li>
 
             <li class="<?php echo basename($_SERVER['PHP_SELF']) == 'pembayaran.php' ? 'active' : ''; ?>">
-                <a href="pembayaran.php">
+                <a href="pembayaran.php" data-i18n-title="menu.payment">
                     <i class="fas fa-money-bill-wave"></i>
-                    <span>Pembayaran Pajak</span>
+                    <span data-i18n="menu.payment">Pembayaran</span>
                 </a>
             </li>
 
             <li class="<?php echo basename($_SERVER['PHP_SELF']) == 'riwayat.php' ? 'active' : ''; ?>">
-                <a href="riwayat.php">
+                <a href="riwayat.php" data-i18n-title="menu.history">
                     <i class="fas fa-history"></i>
-                    <span>Riwayat Pembayaran</span>
+                    <span data-i18n="menu.history">Riwayat</span>
                 </a>
             </li>
 
             <li class="<?php echo basename($_SERVER['PHP_SELF']) == 'jenis_pajak.php' ? 'active' : ''; ?>">
-                <a href="jenis_pajak.php">
+                <a href="jenis_pajak.php" data-i18n-title="menu.tax_types">
                     <i class="fas fa-list-alt"></i>
-                    <span>Jenis Pajak</span>
+                    <span data-i18n="menu.tax_types">Jenis Pajak</span>
                 </a>
             </li>
 
             <li class="<?php echo basename($_SERVER['PHP_SELF']) == 'laporan.php' ? 'active' : ''; ?>">
-                <a href="laporan.php">
+                <a href="laporan.php" data-i18n-title="menu.report">
                     <i class="fas fa-file-alt"></i>
-                    <span>Laporan</span>
+                    <span data-i18n="menu.report">Laporan</span>
                 </a>
             </li>
 
@@ -62,9 +62,9 @@
             </li>
 
             <li class="<?php echo basename($_SERVER['PHP_SELF']) == 'users.php' ? 'active' : ''; ?>">
-                <a href="users.php">
+                <a href="users.php" data-i18n-title="menu.users">
                     <i class="fas fa-users"></i>
-                    <span>Manajemen User</span>
+                    <span data-i18n="menu.users">Kelola Pengguna</span>
                 </a>
             </li>
             <?php endif; ?>
@@ -74,16 +74,16 @@
             </li>
 
             <li class="<?php echo basename($_SERVER['PHP_SELF']) == 'profile.php' ? 'active' : ''; ?>">
-                <a href="profile.php">
+                <a href="profile.php" data-i18n-title="menu.profile">
                     <i class="fas fa-user-cog"></i>
-                    <span>Profil Saya</span>
+                    <span data-i18n="menu.profile">Profil Saya</span>
                 </a>
             </li>
 
             <li>
-                <a href="logout.php" onclick="return confirm('Yakin ingin logout?')">
+                <a href="logout.php" data-i18n-title="menu.logout" onclick="return confirm(window.i18n ? window.i18n.t('msg.confirm_logout') : 'Yakin ingin logout?')">
                     <i class="fas fa-sign-out-alt"></i>
-                    <span>Logout</span>
+                    <span data-i18n="menu.logout">Keluar</span>
                 </a>
             </li>
         </ul>
@@ -93,25 +93,101 @@
 <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
 <script>
-    const sidebar = document.getElementById('sidebar');
-    const sidebarToggle = document.getElementById('sidebarToggle');
-    const sidebarOverlay = document.getElementById('sidebarOverlay');
-    const menuToggle = document.getElementById('menuToggle');
+    // Tunggu sampai semua DOM selesai loading
+    document.addEventListener('DOMContentLoaded', function() {
+        // Ambil semua elemen yang diperlukan
+        const sidebar = document.getElementById('sidebar');
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+        const menuToggle = document.getElementById('menuToggle');
+        const mainContent = document.querySelector('.main-content');
 
-    if (menuToggle) {
-        menuToggle.addEventListener('click', function() {
-            sidebar.classList.add('active');
-            sidebarOverlay.classList.add('active');
+        // Debug: Cek apakah elemen ditemukan
+        console.log('Sidebar initialized:', {
+            sidebar: !!sidebar,
+            sidebarToggle: !!sidebarToggle,
+            sidebarOverlay: !!sidebarOverlay,
+            menuToggle: !!menuToggle,
+            mainContent: !!mainContent
         });
-    }
 
-    sidebarToggle.addEventListener('click', function() {
-        sidebar.classList.remove('active');
-        sidebarOverlay.classList.remove('active');
-    });
+        // Pastikan semua elemen ada
+        if (!sidebar || !sidebarToggle || !sidebarOverlay || !mainContent) {
+            console.error('Sidebar elements not found!');
+            return;
+        }
 
-    sidebarOverlay.addEventListener('click', function() {
-        sidebar.classList.remove('active');
-        sidebarOverlay.classList.remove('active');
+        // Toggle untuk mobile (overlay mode) dan desktop (collapsed mode)
+        if (menuToggle) {
+            menuToggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                console.log('Menu toggle clicked, window width:', window.innerWidth);
+                
+                if (window.innerWidth <= 1024) {
+                    // Mobile: Tampilkan sebagai overlay
+                    sidebar.classList.add('active');
+                    sidebarOverlay.classList.add('active');
+                    console.log('Mobile mode: Sidebar opened');
+                } else {
+                    // Desktop: Toggle collapse
+                    sidebar.classList.toggle('collapsed');
+                    mainContent.classList.toggle('sidebar-collapsed');
+                    
+                    // Simpan state di localStorage
+                    const isCollapsed = sidebar.classList.contains('collapsed');
+                    localStorage.setItem('sidebarCollapsed', isCollapsed);
+                    console.log('Desktop mode: Sidebar collapsed =', isCollapsed);
+                }
+            });
+        } else {
+            console.warn('Menu toggle button not found!');
+        }
+
+        // Tutup sidebar di mobile (tombol X)
+        sidebarToggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            sidebar.classList.remove('active');
+            sidebarOverlay.classList.remove('active');
+            console.log('Sidebar closed via toggle button');
+        });
+
+        // Tutup sidebar di mobile (klik overlay)
+        sidebarOverlay.addEventListener('click', function() {
+            sidebar.classList.remove('active');
+            sidebarOverlay.classList.remove('active');
+            console.log('Sidebar closed via overlay click');
+        });
+
+        // Restore sidebar state dari localStorage saat page load (hanya untuk desktop)
+        if (window.innerWidth > 1024) {
+            const isCollapsed = localStorage.getItem('sidebarCollapsed') === 'true';
+            if (isCollapsed) {
+                sidebar.classList.add('collapsed');
+                mainContent.classList.add('sidebar-collapsed');
+                console.log('Restored collapsed state from localStorage');
+            }
+        }
+
+        // Handle resize window
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 1024) {
+                // Desktop mode: tutup overlay jika ada
+                sidebar.classList.remove('active');
+                sidebarOverlay.classList.remove('active');
+                
+                // Restore collapsed state dari localStorage
+                const isCollapsed = localStorage.getItem('sidebarCollapsed') === 'true';
+                if (isCollapsed) {
+                    sidebar.classList.add('collapsed');
+                    mainContent.classList.add('sidebar-collapsed');
+                }
+            } else {
+                // Mobile mode: hapus collapsed class
+                sidebar.classList.remove('collapsed');
+                mainContent.classList.remove('sidebar-collapsed');
+            }
+        });
+
+        console.log('Sidebar script initialized successfully!');
     });
 </script>
