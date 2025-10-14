@@ -58,7 +58,7 @@
 
             <?php if (isAdmin()): ?>
             <li class="menu-separator">
-                <span>ADMINISTRATOR</span>
+                <span data-i18n="menu.admin_section">ADMINISTRATOR</span>
             </li>
 
             <li class="<?php echo basename($_SERVER['PHP_SELF']) == 'users.php' ? 'active' : ''; ?>">
@@ -70,7 +70,7 @@
             <?php endif; ?>
 
             <li class="menu-separator">
-                <span>AKUN</span>
+                <span data-i18n="menu.account_section">AKUN</span>
             </li>
 
             <li class="<?php echo basename($_SERVER['PHP_SELF']) == 'profile.php' ? 'active' : ''; ?>">

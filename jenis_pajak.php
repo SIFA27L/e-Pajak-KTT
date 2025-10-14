@@ -129,28 +129,28 @@ $jenisPajak = $stmt->fetchAll();
         
         <div class="content-wrapper">
             <div class="page-header">
-                <h1>Jenis Pajak Indonesia</h1>
-                <p>Informasi lengkap tentang berbagai jenis pajak yang tersedia</p>
+                <h1 data-i18n="tax.title">Jenis Pajak Indonesia</h1>
+                <p data-i18n="tax.subtitle">Informasi lengkap tentang berbagai jenis pajak yang tersedia</p>
             </div>
 
             <div class="info-section">
-                <h3><i class="fas fa-info-circle"></i> Informasi Pajak Indonesia</h3>
+                <h3><i class="fas fa-info-circle"></i> <span data-i18n="tax.info_title">Informasi Pajak Indonesia</span></h3>
                 <ul>
                     <li>
                         <i class="fas fa-check-circle"></i>
-                        <span>Semua warga negara Indonesia yang memiliki penghasilan di atas PTKP (Penghasilan Tidak Kena Pajak) wajib membayar pajak</span>
+                        <span data-i18n="tax.info_1">Semua warga negara Indonesia yang memiliki penghasilan di atas PTKP (Penghasilan Tidak Kena Pajak) wajib membayar pajak</span>
                     </li>
                     <li>
                         <i class="fas fa-check-circle"></i>
-                        <span>Pajak dapat dibayarkan secara online melalui sistem e-Billing Direktorat Jenderal Pajak</span>
+                        <span data-i18n="tax.info_2">Pajak dapat dibayarkan secara online melalui sistem e-Billing Direktorat Jenderal Pajak</span>
                     </li>
                     <li>
                         <i class="fas fa-check-circle"></i>
-                        <span>Pastikan NPWP Anda aktif dan valid sebelum melakukan pembayaran</span>
+                        <span data-i18n="tax.info_3">Pastikan NPWP Anda aktif dan valid sebelum melakukan pembayaran</span>
                     </li>
                     <li>
                         <i class="fas fa-check-circle"></i>
-                        <span>Simpan bukti pembayaran pajak Anda sebagai arsip dan bukti pelaporan</span>
+                        <span data-i18n="tax.info_4">Simpan bukti pembayaran pajak Anda sebagai arsip dan bukti pelaporan</span>
                     </li>
                 </ul>
             </div>
@@ -171,11 +171,11 @@ $jenisPajak = $stmt->fetchAll();
                             <?php if ($pajak['persentase'] > 0): ?>
                             <span class="pajak-rate"><?php echo number_format($pajak['persentase'], 2); ?>%</span>
                             <?php else: ?>
-                            <span style="color: #6b7280; font-size: 0.9rem;">Sesuai Ketentuan</span>
+                            <span style="color: #6b7280; font-size: 0.9rem;" data-i18n="tax.as_regulated">Sesuai Ketentuan</span>
                             <?php endif; ?>
                         </div>
                         <button class="btn-primary" onclick="window.location.href='pembayaran.php'">
-                            <i class="fas fa-arrow-right"></i> Bayar
+                            <i class="fas fa-arrow-right"></i> <span data-i18n="tax.pay_now">Bayar</span>
                         </button>
                     </div>
                 </div>

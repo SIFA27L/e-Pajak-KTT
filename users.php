@@ -442,7 +442,7 @@ $page_title = "Manajemen User";
                     </div>
                     <div class="stat-details">
                         <h3><?php echo number_format($stats['total_users']); ?></h3>
-                        <p>Total User</p>
+                        <p data-i18n="users.total_users">Total User</p>
                     </div>
                 </div>
 
@@ -452,7 +452,7 @@ $page_title = "Manajemen User";
                     </div>
                     <div class="stat-details">
                         <h3><?php echo number_format($stats['total_admin']); ?></h3>
-                        <p>Administrator</p>
+                        <p data-i18n="users.administrator">Administrator</p>
                     </div>
                 </div>
 
@@ -462,7 +462,7 @@ $page_title = "Manajemen User";
                     </div>
                     <div class="stat-details">
                         <h3><?php echo number_format($stats['total_user']); ?></h3>
-                        <p>User Biasa</p>
+                        <p data-i18n="users.regular_user">User Biasa</p>
                     </div>
                 </div>
 
@@ -472,7 +472,7 @@ $page_title = "Manajemen User";
                     </div>
                     <div class="stat-details">
                         <h3><?php echo number_format($stats['total_active']); ?></h3>
-                        <p>Aktif</p>
+                        <p data-i18n="users.active">Aktif</p>
                     </div>
                 </div>
 
@@ -482,7 +482,7 @@ $page_title = "Manajemen User";
                     </div>
                     <div class="stat-details">
                         <h3><?php echo number_format($stats['total_inactive']); ?></h3>
-                        <p>Nonaktif</p>
+                        <p data-i18n="users.inactive">Nonaktif</p>
                     </div>
                 </div>
             </div>
@@ -491,14 +491,14 @@ $page_title = "Manajemen User";
             <div class="users-header">
                 <div class="search-box">
                     <i class="fas fa-search"></i>
-                    <input type="text" id="searchInput" placeholder="Cari user berdasarkan nama, email, atau NPWP...">
+                    <input type="text" id="searchInput" placeholder="Cari user berdasarkan nama, email, atau NPWP..." data-i18n-placeholder="users.search_placeholder">
                 </div>
                 <div class="filter-buttons">
-                    <button class="filter-btn active" data-filter="all">Semua</button>
-                    <button class="filter-btn" data-filter="admin">Admin</button>
-                    <button class="filter-btn" data-filter="user">User</button>
-                    <button class="filter-btn" data-filter="active">Aktif</button>
-                    <button class="filter-btn" data-filter="inactive">Nonaktif</button>
+                    <button class="filter-btn active" data-filter="all" data-i18n="users.all">Semua</button>
+                    <button class="filter-btn" data-filter="admin" data-i18n="users.admin">Admin</button>
+                    <button class="filter-btn" data-filter="user" data-i18n="users.user">User</button>
+                    <button class="filter-btn" data-filter="active" data-i18n="users.active">Aktif</button>
+                    <button class="filter-btn" data-filter="inactive" data-i18n="users.inactive">Nonaktif</button>
                 </div>
             </div>
 
@@ -507,14 +507,14 @@ $page_title = "Manajemen User";
                 <table class="users-table">
                     <thead>
                         <tr>
-                            <th>User</th>
+                            <th data-i18n="users.user">User</th>
                             <th>NPWP</th>
-                            <th>Telepon</th>
-                            <th>Role</th>
-                            <th>Status</th>
-                            <th>Bergabung</th>
-                            <th>Login Terakhir</th>
-                            <th>Aksi</th>
+                            <th data-i18n="users.phone">Telepon</th>
+                            <th data-i18n="users.role">Role</th>
+                            <th data-i18n="users.status">Status</th>
+                            <th data-i18n="users.joined">Bergabung</th>
+                            <th data-i18n="users.last_login">Login Terakhir</th>
+                            <th data-i18n="users.action">Aksi</th>
                         </tr>
                     </thead>
                     <tbody id="usersTableBody">

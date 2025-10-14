@@ -23,8 +23,10 @@ const translations = {
         'menu.payment': 'Pembayaran',
         'menu.history': 'Riwayat',
         'menu.report': 'Laporan',
-        'menu.profile': 'Profil Saya',
+        'menu.admin_section': 'ADMINISTRATOR',
         'menu.users': 'Kelola Pengguna',
+        'menu.account_section': 'AKUN',
+        'menu.profile': 'Profil Saya',
         'menu.logout': 'Keluar',
         
         // User Dropdown
@@ -52,7 +54,14 @@ const translations = {
         'dashboard.period': 'Periode',
         
         // Tax Types (Jenis Pajak)
-        'tax.title': 'Jenis Pajak',
+        'tax.title': 'Jenis Pajak Indonesia',
+        'tax.subtitle': 'Informasi lengkap tentang berbagai jenis pajak yang tersedia',
+        'tax.info_title': 'Informasi Pajak Indonesia',
+        'tax.info_1': 'Semua warga negara Indonesia yang memiliki penghasilan di atas PTKP (Penghasilan Tidak Kena Pajak) wajib membayar pajak',
+        'tax.info_2': 'Pajak dapat dibayarkan secara online melalui sistem e-Billing Direktorat Jenderal Pajak',
+        'tax.info_3': 'Pastikan NPWP Anda aktif dan valid sebelum melakukan pembayaran',
+        'tax.info_4': 'Simpan bukti pembayaran pajak Anda sebagai arsip dan bukti pelaporan',
+        'tax.as_regulated': 'Sesuai Ketentuan',
         'tax.pbb': 'PBB (Pajak Bumi & Bangunan)',
         'tax.pbb_desc': 'Pajak atas tanah dan bangunan',
         'tax.vehicle': 'Pajak Kendaraan Bermotor',
@@ -61,7 +70,7 @@ const translations = {
         'tax.income_desc': 'Pajak penghasilan pribadi/badan',
         'tax.business': 'Pajak Usaha',
         'tax.business_desc': 'Pajak untuk kegiatan usaha',
-        'tax.pay_now': 'Bayar Pajak Sekarang',
+        'tax.pay_now': 'Bayar',
         'tax.details': 'Detail',
         
         // Payment (Pembayaran)
@@ -135,6 +144,18 @@ const translations = {
         
         // Users Management (Kelola Pengguna)
         'users.title': 'Kelola Pengguna',
+        'users.total_users': 'Total User',
+        'users.administrator': 'Administrator',
+        'users.regular_user': 'User Biasa',
+        'users.active': 'Aktif',
+        'users.inactive': 'Nonaktif',
+        'users.all': 'Semua',
+        'users.admin': 'Admin',
+        'users.user': 'User',
+        'users.phone': 'Telepon',
+        'users.joined': 'Bergabung',
+        'users.last_login': 'Login Terakhir',
+        'users.search_placeholder': 'Cari user berdasarkan nama, email, atau NPWP...',
         'users.add_new': 'Tambah Pengguna',
         'users.search': 'Cari pengguna...',
         'users.name': 'Nama',
@@ -144,10 +165,6 @@ const translations = {
         'users.action': 'Aksi',
         'users.edit': 'Edit',
         'users.delete': 'Hapus',
-        'users.active': 'Aktif',
-        'users.inactive': 'Nonaktif',
-        'users.admin': 'Admin',
-        'users.user': 'User',
         
         // Status
         'status.success': 'Berhasil',
@@ -208,6 +225,17 @@ const translations = {
         'time.december': 'Desember',
         
         // Footer
+        'footer.tagline': 'Sistem Pembayaran Pajak Online yang Aman dan Terpercaya',
+        'footer.office_address': 'Alamat Kantor',
+        'footer.contact_us': 'Hubungi Kami',
+        'footer.operational_hours': 'Jam Operasional',
+        'footer.weekdays': 'Senin - Jumat',
+        'footer.saturday': 'Sabtu',
+        'footer.sunday': 'Minggu & Libur',
+        'footer.closed': 'Tutup',
+        'footer.rights': 'All Rights Reserved',
+        'footer.developed': 'Developed with',
+        'footer.by_team': 'by KTT Indonesia IT Team',
         'footer.copyright': '© 2025 e-Pajak KTT. Semua hak dilindungi.',
         'footer.version': 'Versi',
         'footer.contact': 'Kontak',
@@ -228,8 +256,10 @@ const translations = {
         'menu.payment': 'Payment',
         'menu.history': 'History',
         'menu.report': 'Report',
-        'menu.profile': 'My Profile',
+        'menu.admin_section': 'ADMINISTRATOR',
         'menu.users': 'User Management',
+        'menu.account_section': 'ACCOUNT',
+        'menu.profile': 'My Profile',
         'menu.logout': 'Logout',
         
         // User Dropdown
@@ -257,7 +287,14 @@ const translations = {
         'dashboard.period': 'Period',
         
         // Tax Types
-        'tax.title': 'Tax Types',
+        'tax.title': 'Indonesian Tax Types',
+        'tax.subtitle': 'Complete information about various available tax types',
+        'tax.info_title': 'Indonesian Tax Information',
+        'tax.info_1': 'All Indonesian citizens who have income above PTKP (Non-Taxable Income) are required to pay taxes',
+        'tax.info_2': 'Taxes can be paid online through the Directorate General of Taxes e-Billing system',
+        'tax.info_3': 'Make sure your NPWP is active and valid before making payment',
+        'tax.info_4': 'Keep your tax payment receipt as an archive and proof of reporting',
+        'tax.as_regulated': 'As Regulated',
         'tax.pbb': 'Property Tax',
         'tax.pbb_desc': 'Tax on land and buildings',
         'tax.vehicle': 'Vehicle Tax',
@@ -266,7 +303,7 @@ const translations = {
         'tax.income_desc': 'Personal/corporate income tax',
         'tax.business': 'Business Tax',
         'tax.business_desc': 'Tax for business activities',
-        'tax.pay_now': 'Pay Tax Now',
+        'tax.pay_now': 'Pay',
         'tax.details': 'Details',
         
         // Payment
@@ -340,6 +377,18 @@ const translations = {
         
         // Users Management
         'users.title': 'User Management',
+        'users.total_users': 'Total Users',
+        'users.administrator': 'Administrator',
+        'users.regular_user': 'Regular User',
+        'users.active': 'Active',
+        'users.inactive': 'Inactive',
+        'users.all': 'All',
+        'users.admin': 'Admin',
+        'users.user': 'User',
+        'users.phone': 'Phone',
+        'users.joined': 'Joined',
+        'users.last_login': 'Last Login',
+        'users.search_placeholder': 'Search user by name, email, or Tax ID...',
         'users.add_new': 'Add User',
         'users.search': 'Search users...',
         'users.name': 'Name',
@@ -349,10 +398,6 @@ const translations = {
         'users.action': 'Action',
         'users.edit': 'Edit',
         'users.delete': 'Delete',
-        'users.active': 'Active',
-        'users.inactive': 'Inactive',
-        'users.admin': 'Admin',
-        'users.user': 'User',
         
         // Status
         'status.success': 'Success',
@@ -413,6 +458,17 @@ const translations = {
         'time.december': 'December',
         
         // Footer
+        'footer.tagline': 'Secure and Trusted Online Tax Payment System',
+        'footer.office_address': 'Office Address',
+        'footer.contact_us': 'Contact Us',
+        'footer.operational_hours': 'Operational Hours',
+        'footer.weekdays': 'Monday - Friday',
+        'footer.saturday': 'Saturday',
+        'footer.sunday': 'Sunday & Holidays',
+        'footer.closed': 'Closed',
+        'footer.rights': 'All Rights Reserved',
+        'footer.developed': 'Developed with',
+        'footer.by_team': 'by KTT Indonesia IT Team',
         'footer.copyright': '© 2025 e-Pajak KTT. All rights reserved.',
         'footer.version': 'Version',
         'footer.contact': 'Contact',
@@ -585,8 +641,18 @@ class I18n {
 // Create global instance
 window.i18n = new I18n();
 
-// Auto-update content on page load
-document.addEventListener('DOMContentLoaded', function() {
+// Apply translations as soon as script loads (before DOMContentLoaded)
+// This prevents flickering/glitching
+if (document.readyState === 'loading') {
+    // If still loading, wait for interactive state
+    document.addEventListener('DOMContentLoaded', initializeI18n);
+} else {
+    // DOM is already loaded, initialize immediately
+    initializeI18n();
+}
+
+function initializeI18n() {
+    // Update content immediately
     window.i18n.updatePageContent();
     
     // Set active language button in dropdown
@@ -598,7 +664,14 @@ document.addEventListener('DOMContentLoaded', function() {
             btn.classList.remove('active');
         }
     });
-});
+}
+
+// Also run a quick update immediately for early-loaded elements
+setTimeout(() => {
+    if (window.i18n) {
+        window.i18n.updatePageContent();
+    }
+}, 0);
 
 // Export for module systems (if needed)
 if (typeof module !== 'undefined' && module.exports) {
