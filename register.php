@@ -15,7 +15,7 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -95,8 +95,8 @@
 
         .form-control:focus {
             outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            border-color: #10b981;
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
         }
 
         textarea.form-control {
@@ -107,7 +107,7 @@
         .btn-register {
             width: 100%;
             padding: 14px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
             color: white;
             border: none;
             border-radius: 10px;
@@ -120,7 +120,7 @@
 
         .btn-register:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.4);
         }
 
         .register-footer {
@@ -130,14 +130,14 @@
         }
 
         .register-footer a {
-            color: #667eea;
+            color: #059669;
             text-decoration: none;
             font-weight: 600;
             transition: color 0.3s ease;
         }
 
         .register-footer a:hover {
-            color: #764ba2;
+            color: #047857;
         }
 
         .alert {
@@ -258,6 +258,17 @@
                         <input type="password" class="form-control" id="confirm_password" name="confirm_password" required>
                     </div>
                 </div>
+            </div>
+
+            <div class="form-group">
+                <label for="admin_code">Kode Akses Admin (Opsional)</label>
+                <div class="input-wrapper">
+                    <i class="fas fa-key"></i>
+                    <input type="text" class="form-control" id="admin_code" name="admin_code" placeholder="Kosongkan jika mendaftar sebagai user biasa">
+                </div>
+                <small style="color: #666; font-size: 0.85rem; margin-top: 5px; display: block;">
+                    <i class="fas fa-info-circle"></i> Masukkan kode akses khusus untuk mendaftar sebagai admin
+                </small>
             </div>
 
             <button type="submit" class="btn-register">

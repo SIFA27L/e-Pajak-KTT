@@ -12,6 +12,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nik = sanitize($_POST['nik']);
     $address = sanitize($_POST['address']);
     $password = $_POST['password'];
+    $admin_code = isset($_POST['admin_code']) ? sanitize($_POST['admin_code']) : '';
+
+    // Tentukan role berdasarkan kode akses
+    $role = 'user'; // Default role
+    if (!empty($admin_code) && $admin_code === 'KTTIND25') {
+        $role = 'admin';
+    }
 
     // Validation
     if (empty($full_name) || empty($username) || empty($email) || empty($phone) || 
@@ -69,9 +76,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Hash password
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-        // Insert user
+        // Insert user dengan role yang sesuai
         $stmt = $conn->prepare("INSERT INTO users (username, email, password, full_name, npwp, nik, phone, address, role, status) 
-                                VALUES (:username, :email, :password, :full_name, :npwp, :nik, :phone, :address, 'user', 'active')");
+                                VALUES (:username, :email, :password, :full_name, :npwp, :nik, :phone, :address, :role, 'active')");
         
         $stmt->bindParam(':username', $username);
         $stmt->bindParam(':email', $email);
@@ -81,11 +88,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->bindParam(':nik', $nik);
         $stmt->bindParam(':phone', $phone);
         $stmt->bindParam(':address', $address);
+        $stmt->bindParam(':role', $role);
 
         if ($stmt->execute()) {
+            $successMessage = $role === 'admin' 
+                ? 'Pendaftaran sebagai ADMIN berhasil! Silakan login.' 
+                : 'Pendaftaran berhasil! Silakan login.';
+            
             echo json_encode([
                 'success' => true,
-                'message' => 'Pendaftaran berhasil! Silakan login.'
+                'message' => $successMessage
             ]);
         } else {
             echo json_encode([

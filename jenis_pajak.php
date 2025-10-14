@@ -33,7 +33,7 @@ $jenisPajak = $stmt->fetchAll();
             border-radius: 15px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border-left: 5px solid #667eea;
+            border-left: 5px solid #10b981;
         }
 
         .pajak-card:hover {
@@ -51,7 +51,7 @@ $jenisPajak = $stmt->fetchAll();
         .pajak-code {
             font-size: 1.3rem;
             font-weight: 700;
-            color: #667eea;
+            color: #059669;
         }
 
         .pajak-title {
@@ -91,7 +91,7 @@ $jenisPajak = $stmt->fetchAll();
         }
 
         .info-section h3 {
-            color: #667eea;
+            color: #059669;
             margin-bottom: 15px;
             display: flex;
             align-items: center;
@@ -116,7 +116,7 @@ $jenisPajak = $stmt->fetchAll();
         }
 
         .info-section li i {
-            color: #667eea;
+            color: #10b981;
             margin-top: 3px;
         }
     </style>

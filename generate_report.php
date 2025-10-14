@@ -81,12 +81,12 @@ header('Content-Type: text/html; charset=utf-8');
         }
         .header {
             text-align: center;
-            border-bottom: 3px solid #667eea;
+            border-bottom: 3px solid #10b981;
             padding-bottom: 20px;
             margin-bottom: 30px;
         }
         .header h1 {
-            color: #667eea;
+            color: #10b981;
             margin: 0;
         }
         .header p {
@@ -110,7 +110,7 @@ header('Content-Type: text/html; charset=utf-8');
             text-align: left;
         }
         th {
-            background: #667eea;
+            background: #10b981;
             color: white;
         }
         tr:nth-child(even) {
@@ -136,7 +136,7 @@ header('Content-Type: text/html; charset=utf-8');
     </style>
 </head>
 <body>
-    <button onclick="window.print()" class="no-print" style="padding: 10px 20px; background: #667eea; color: white; border: none; border-radius: 5px; cursor: pointer; margin-bottom: 20px;">
+    <button onclick="window.print()" class="no-print" style="padding: 10px 20px; background: #10b981; color: white; border: none; border-radius: 5px; cursor: pointer; margin-bottom: 20px;">
         Print / Save as PDF
     </button>
 
@@ -147,7 +147,7 @@ header('Content-Type: text/html; charset=utf-8');
         <p>Telp: (021) 1234-5678 | Email: info@kttindonesia.com</p>
     </div>
 
-    <h2 style="color: #667eea; border-bottom: 2px solid #667eea; padding-bottom: 10px;"><?php echo $title; ?></h2>
+    <h2 style="color: #10b981; border-bottom: 2px solid #10b981; padding-bottom: 10px;"><?php echo $title; ?></h2>
 
     <div class="info-box">
         <strong>Nama:</strong> <?php echo $_SESSION['full_name']; ?><br>

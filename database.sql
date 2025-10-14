@@ -1,8 +1,8 @@
 -- Database untuk Sistem Pembayaran Pajak KTT Indonesia
 -- Created: 2025-10-14
 
-CREATE DATABASE IF NOT EXISTS `e-pajak_ktt` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-USE `e-pajak_ktt`;
+CREATE DATABASE IF NOT EXISTS epajak_ktt CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE epajak_ktt;
 
 -- Tabel Users
 CREATE TABLE IF NOT EXISTS users (
@@ -81,10 +81,7 @@ CREATE TABLE IF NOT EXISTS laporan (
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 ) ENGINE=InnoDB;
 
--- Insert Superadmin (Password: admin123)
--- Note: Password sudah di-hash dengan password_hash() PHP
-INSERT INTO users (username, email, password, full_name, role, npwp, nik, phone, address, status) VALUES
-('superadmin', 'superadmin@kttindonesia.com', '$2y$10$vHwLBqcE5n0rQVGKgKXrHu.8s1PqE3DZZ0OqR1P6P9hJH.yqB.yGy', 'Super Administrator KTT', 'superadmin', '01.234.567.8-901.000', '3175012345678901', '021-12345678', 'Jakarta Pusat', 'active');
+-- Tidak ada data user default, silakan register dengan kode akses admin: KTTIND25
 
 -- Insert Data Jenis Pajak Indonesia
 INSERT INTO jenis_pajak (kode_pajak, nama_pajak, deskripsi, persentase, status) VALUES

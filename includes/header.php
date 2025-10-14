@@ -15,11 +15,6 @@
         </div>
 
         <div class="header-actions">
-            <div class="notification-btn">
-                <i class="fas fa-bell"></i>
-                <span class="badge-notification">3</span>
-            </div>
-
             <div class="user-menu">
                 <div class="user-avatar-small">
                     <i class="fas fa-user-circle"></i>

@@ -61,15 +61,27 @@ Website pembayaran pajak online yang modern, aman, dan user-friendly untuk memud
    - Akses: `http://localhost/e-commerce/`
    - Otomatis redirect ke halaman login
 
-## 👤 Akun Default
+5. **Reset Admin (Jika diperlukan)**
+   - Jika ada akun admin lama, jalankan: `reset_admin.sql`
+   - Kemudian register ulang dengan kode akses admin
 
-### Superadmin
-- **Username:** `superadmin`
-- **Email:** `superadmin@kttindonesia.com`
-- **Password:** `admin123`
-- **NPWP:** `01.234.567.8-901.000`
+## 👤 Cara Membuat Akun
 
-> ⚠️ **Penting:** Segera ubah password default setelah login pertama kali!
+### Untuk Akun Admin
+1. Klik tombol **Register** di halaman login
+2. Isi semua data yang diperlukan
+3. Pada field **"Kode Akses Admin"**, masukkan: `KTTIND25`
+4. Klik **Daftar Sekarang**
+5. Login dengan akun yang baru dibuat
+
+### Untuk Akun User Biasa
+1. Klik tombol **Register** di halaman login
+2. Isi semua data yang diperlukan
+3. **Kosongkan** field **"Kode Akses Admin"** atau isi dengan kode lain
+4. Klik **Daftar Sekarang**
+5. Login dengan akun yang baru dibuat
+
+> 🔐 **Kode Akses Admin:** `KTTIND25` (Hanya untuk membuat akun admin)
 
 ## 📊 Jenis Pajak yang Didukung
 
@@ -91,9 +103,9 @@ Website pembayaran pajak online yang modern, aman, dan user-friendly untuk memud
 - **Interactive Charts** - Visualisasi data dengan Chart.js
 - **Smooth Animations** - Hover effects dan transitions
 - **Color Palette:**
-  - Primary: #667eea (Purple)
-  - Secondary: #764ba2 (Dark Purple)
-  - Accent Colors: Gradient combinations
+  - Primary: #10b981 (Green)
+  - Secondary: #059669 (Dark Green)
+  - Accent Colors: Light Green (#34d399, #6ee7b7, #a7f3d0)
 
 ## 📁 Struktur Project
 
@@ -187,20 +199,9 @@ Sistem sudah siap diintegrasikan dengan:
 - Cek username dan password
 - Pastikan akun status 'active'
 
-## 📞 Informasi Kontak PT KTT Indonesia
-
-- **Alamat:** Jl. Sudirman No. 123, Jakarta Pusat 10220, Indonesia
-- **Telepon:** (021) 1234-5678
-- **Email:** info@kttindonesia.com
-- **Website:** www.kttindonesia.com
-- **Jam Operasional:**
-  - Senin - Jumat: 08:00 - 17:00 WIB
-  - Sabtu: 08:00 - 12:00 WIB
-  - Minggu & Libur: Tutup
-
 ## 📝 License
 
-© 2025 PT KTT Indonesia. All Rights Reserved.
+© 2025 TAK ADA LISENSI
 
 ## 👨‍💻 Developer
 

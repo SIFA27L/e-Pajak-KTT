@@ -136,7 +136,7 @@ $pajakDistribution = $stmt->fetchAll();
             <!-- Statistics Cards -->
             <div class="stats-grid">
                 <div class="stat-card">
-                    <div class="stat-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
                         <i class="fas fa-file-invoice"></i>
                     </div>
                     <div class="stat-details">
@@ -146,7 +146,7 @@ $pajakDistribution = $stmt->fetchAll();
                 </div>
 
                 <div class="stat-card">
-                    <div class="stat-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, #34d399 0%, #10b981 100%);">
                         <i class="fas fa-check-circle"></i>
                     </div>
                     <div class="stat-details">
@@ -156,7 +156,7 @@ $pajakDistribution = $stmt->fetchAll();
                 </div>
 
                 <div class="stat-card">
-                    <div class="stat-icon" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, #6ee7b7 0%, #34d399 100%);">
                         <i class="fas fa-money-bill-wave"></i>
                     </div>
                     <div class="stat-details">
@@ -166,7 +166,7 @@ $pajakDistribution = $stmt->fetchAll();
                 </div>
 
                 <div class="stat-card">
-                    <div class="stat-icon" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, #a7f3d0 0%, #6ee7b7 100%);">
                         <i class="fas fa-clock"></i>
                     </div>
                     <div class="stat-details">
@@ -269,8 +269,8 @@ $pajakDistribution = $stmt->fetchAll();
                 datasets: [{
                     label: 'Total Pembayaran',
                     data: <?php echo json_encode(array_column($monthlyData, 'total')); ?>,
-                    borderColor: '#667eea',
-                    backgroundColor: 'rgba(102, 126, 234, 0.1)',
+                    borderColor: '#10b981',
+                    backgroundColor: 'rgba(16, 185, 129, 0.1)',
                     tension: 0.4,
                     fill: true
                 }]
@@ -305,11 +305,11 @@ $pajakDistribution = $stmt->fetchAll();
                 datasets: [{
                     data: <?php echo json_encode(array_column($pajakDistribution, 'total')); ?>,
                     backgroundColor: [
-                        '#667eea',
-                        '#f093fb',
-                        '#4facfe',
-                        '#fa709a',
-                        '#feca57'
+                        '#10b981',
+                        '#34d399',
+                        '#6ee7b7',
+                        '#a7f3d0',
+                        '#d1fae5'
                     ]
                 }]
             },

@@ -54,7 +54,7 @@ $jenisPajak = $stmt->fetchAll();
 
         .form-control:focus {
             outline: none;
-            border-color: #667eea;
+            border-color: #10b981;
         }
 
         .form-row {
@@ -66,7 +66,7 @@ $jenisPajak = $stmt->fetchAll();
         .btn-submit {
             width: 100%;
             padding: 14px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
             color: white;
             border: none;
             border-radius: 8px;
@@ -136,7 +136,7 @@ $jenisPajak = $stmt->fetchAll();
                 <div id="alert" class="alert"></div>
 
                 <form id="paymentForm" method="POST">
-                    <h3 style="margin-bottom: 20px; color: #667eea;">
+                    <h3 style="margin-bottom: 20px; color: #059669;">
                         <i class="fas fa-file-invoice"></i> Data Pajak
                     </h3>
 
@@ -199,7 +199,7 @@ $jenisPajak = $stmt->fetchAll();
                         </div>
                     </div>
 
-                    <h3 style="margin: 30px 0 20px; color: #667eea;">
+                    <h3 style="margin: 30px 0 20px; color: #059669;">
                         <i class="fas fa-credit-card"></i> Metode Pembayaran
                     </h3>
 
@@ -221,7 +221,7 @@ $jenisPajak = $stmt->fetchAll();
 
                     <div class="form-group" style="background: #f9fafb; padding: 15px; border-radius: 8px;">
                         <h4 style="margin-bottom: 10px;">Total Pembayaran:</h4>
-                        <h2 id="total_display" style="color: #667eea;">Rp 0</h2>
+                        <h2 id="total_display" style="color: #059669;">Rp 0</h2>
                         <input type="hidden" id="total_bayar" name="total_bayar" value="0">
                     </div>
 

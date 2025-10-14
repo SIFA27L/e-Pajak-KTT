@@ -85,7 +85,7 @@ $role = $_SESSION['role'];
         .btn-generate {
             width: 100%;
             padding: 12px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
             color: white;
             border: none;
             border-radius: 8px;
@@ -114,7 +114,7 @@ $role = $_SESSION['role'];
             <div class="report-options">
                 <!-- Laporan Bulanan -->
                 <div class="report-card">
-                    <div class="report-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                    <div class="report-icon" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
                         <i class="fas fa-calendar-alt"></i>
                     </div>
                     <div class="report-title">Laporan Bulanan</div>
@@ -151,7 +151,7 @@ $role = $_SESSION['role'];
 
                 <!-- Laporan Tahunan -->
                 <div class="report-card">
-                    <div class="report-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                    <div class="report-icon" style="background: linear-gradient(135deg, #34d399 0%, #10b981 100%);">
                         <i class="fas fa-chart-line"></i>
                     </div>
                     <div class="report-title">Laporan Tahunan</div>
@@ -177,7 +177,7 @@ $role = $_SESSION['role'];
 
                 <!-- Laporan Custom -->
                 <div class="report-card">
-                    <div class="report-icon" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                    <div class="report-icon" style="background: linear-gradient(135deg, #6ee7b7 0%, #34d399 100%);">
                         <i class="fas fa-filter"></i>
                     </div>
                     <div class="report-title">Laporan Custom</div>
@@ -233,7 +233,7 @@ $role = $_SESSION['role'];
                 
                 <div class="stats-grid">
                     <div class="stat-card">
-                        <div class="stat-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                        <div class="stat-icon" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
                             <i class="fas fa-receipt"></i>
                         </div>
                         <div class="stat-details">
@@ -243,7 +243,7 @@ $role = $_SESSION['role'];
                     </div>
 
                     <div class="stat-card">
-                        <div class="stat-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                        <div class="stat-icon" style="background: linear-gradient(135deg, #34d399 0%, #10b981 100%);">
                             <i class="fas fa-wallet"></i>
                         </div>
                         <div class="stat-details">
@@ -253,7 +253,7 @@ $role = $_SESSION['role'];
                     </div>
 
                     <div class="stat-card">
-                        <div class="stat-icon" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                        <div class="stat-icon" style="background: linear-gradient(135deg, #6ee7b7 0%, #34d399 100%);">
                             <i class="fas fa-chart-pie"></i>
                         </div>
                         <div class="stat-details">
@@ -263,7 +263,7 @@ $role = $_SESSION['role'];
                     </div>
 
                     <div class="stat-card">
-                        <div class="stat-icon" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                        <div class="stat-icon" style="background: linear-gradient(135deg, #a7f3d0 0%, #6ee7b7 100%);">
                             <i class="fas fa-arrow-up"></i>
                         </div>
                         <div class="stat-details">
