@@ -11,8 +11,8 @@ date_default_timezone_set('Asia/Jakarta');
 // Company Information
 define('COMPANY_NAME', 'PT KTT Indonesia');
 define('COMPANY_SHORT', 'KTT Indonesia');
-define('COMPANY_ADDRESS', 'Jl. Sudirman No. 123, Jakarta Pusat 10220, Indonesia');
-define('COMPANY_PHONE', '(021) 1234-5678');
+define('COMPANY_ADDRESS', 'Jl. Nangka, Tanjung Barat, Jakarta Selatan, 12530, Indonesia');
+define('COMPANY_PHONE', '0851 7531 0587');
 define('COMPANY_EMAIL', 'info@kttindonesia.com');
 define('COMPANY_WEBSITE', 'www.kttindonesia.com');
 
