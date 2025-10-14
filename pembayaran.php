@@ -1,0 +1,288 @@
+<?php
+require_once 'config/config.php';
+requireLogin();
+
+$db = new Database();
+$conn = $db->getConnection();
+
+// Get jenis pajak
+$stmt = $conn->prepare("SELECT * FROM jenis_pajak WHERE status = 'active' ORDER BY nama_pajak");
+$stmt->execute();
+$jenisPajak = $stmt->fetchAll();
+?>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pembayaran Pajak - KTT Indonesia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .form-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            max-width: 800px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .form-group label .required {
+            color: #ef4444;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+        }
+
+        .alert {
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .alert-error {
+            background: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #fecaca;
+        }
+
+        .alert-success {
+            background: #d1fae5;
+            color: #065f46;
+            border: 1px solid #a7f3d0;
+        }
+
+        .info-box {
+            background: #dbeafe;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #3b82f6;
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <?php include 'includes/sidebar.php'; ?>
+    
+    <div class="main-content">
+        <?php include 'includes/header.php'; ?>
+        
+        <div class="content-wrapper">
+            <div class="page-header">
+                <h1>Pembayaran Pajak</h1>
+                <p>Lakukan pembayaran pajak Anda dengan mudah dan aman</p>
+            </div>
+
+            <div class="form-card">
+                <div class="info-box">
+                    <i class="fas fa-info-circle"></i>
+                    <strong>Informasi:</strong> Pastikan semua data yang Anda masukkan sudah benar. Pembayaran yang sudah diproses tidak dapat dibatalkan.
+                </div>
+
+                <div id="alert" class="alert"></div>
+
+                <form id="paymentForm" method="POST">
+                    <h3 style="margin-bottom: 20px; color: #667eea;">
+                        <i class="fas fa-file-invoice"></i> Data Pajak
+                    </h3>
+
+                    <div class="form-group">
+                        <label for="jenis_pajak_id">Jenis Pajak <span class="required">*</span></label>
+                        <select class="form-control" id="jenis_pajak_id" name="jenis_pajak_id" required>
+                            <option value="">Pilih Jenis Pajak</option>
+                            <?php foreach ($jenisPajak as $jp): ?>
+                            <option value="<?php echo $jp['id']; ?>" data-persentase="<?php echo $jp['persentase']; ?>">
+                                <?php echo $jp['kode_pajak']; ?> - <?php echo $jp['nama_pajak']; ?>
+                            </option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="npwp">NPWP <span class="required">*</span></label>
+                            <input type="text" class="form-control" id="npwp" name="npwp" value="<?php echo $_SESSION['npwp']; ?>" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="tahun_pajak">Tahun Pajak <span class="required">*</span></label>
+                            <select class="form-control" id="tahun_pajak" name="tahun_pajak" required>
+                                <?php for ($i = date('Y'); $i >= date('Y') - 5; $i--): ?>
+                                <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                                <?php endfor; ?>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="masa_pajak">Masa Pajak <span class="required">*</span></label>
+                        <select class="form-control" id="masa_pajak" name="masa_pajak" required>
+                            <option value="">Pilih Masa Pajak</option>
+                            <option value="Januari">Januari</option>
+                            <option value="Februari">Februari</option>
+                            <option value="Maret">Maret</option>
+                            <option value="April">April</option>
+                            <option value="Mei">Mei</option>
+                            <option value="Juni">Juni</option>
+                            <option value="Juli">Juli</option>
+                            <option value="Agustus">Agustus</option>
+                            <option value="September">September</option>
+                            <option value="Oktober">Oktober</option>
+                            <option value="November">November</option>
+                            <option value="Desember">Desember</option>
+                        </select>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="jumlah_pajak">Jumlah Pajak (Rp) <span class="required">*</span></label>
+                            <input type="number" class="form-control" id="jumlah_pajak" name="jumlah_pajak" min="0" step="1000" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="denda">Denda (Rp)</label>
+                            <input type="number" class="form-control" id="denda" name="denda" value="0" min="0" step="1000">
+                        </div>
+                    </div>
+
+                    <h3 style="margin: 30px 0 20px; color: #667eea;">
+                        <i class="fas fa-credit-card"></i> Metode Pembayaran
+                    </h3>
+
+                    <div class="form-group">
+                        <label for="metode_pembayaran">Pilih Metode Pembayaran <span class="required">*</span></label>
+                        <select class="form-control" id="metode_pembayaran" name="metode_pembayaran" required>
+                            <option value="">Pilih Metode</option>
+                            <option value="transfer_bank">Transfer Bank</option>
+                            <option value="virtual_account">Virtual Account</option>
+                            <option value="e_wallet">E-Wallet (OVO, GoPay, Dana)</option>
+                            <option value="kartu_kredit">Kartu Kredit</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="keterangan">Keterangan (Opsional)</label>
+                        <textarea class="form-control" id="keterangan" name="keterangan" rows="3"></textarea>
+                    </div>
+
+                    <div class="form-group" style="background: #f9fafb; padding: 15px; border-radius: 8px;">
+                        <h4 style="margin-bottom: 10px;">Total Pembayaran:</h4>
+                        <h2 id="total_display" style="color: #667eea;">Rp 0</h2>
+                        <input type="hidden" id="total_bayar" name="total_bayar" value="0">
+                    </div>
+
+                    <button type="submit" class="btn-submit">
+                        <i class="fas fa-paper-plane"></i> Proses Pembayaran
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <?php include 'includes/footer.php'; ?>
+    </div>
+
+    <script>
+        // Calculate total
+        function calculateTotal() {
+            const jumlahPajak = parseFloat(document.getElementById('jumlah_pajak').value) || 0;
+            const denda = parseFloat(document.getElementById('denda').value) || 0;
+            const total = jumlahPajak + denda;
+            
+            document.getElementById('total_display').textContent = 'Rp ' + total.toLocaleString('id-ID');
+            document.getElementById('total_bayar').value = total;
+        }
+
+        document.getElementById('jumlah_pajak').addEventListener('input', calculateTotal);
+        document.getElementById('denda').addEventListener('input', calculateTotal);
+
+        // Submit form
+        document.getElementById('paymentForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const alertDiv = document.getElementById('alert');
+            
+            try {
+                const response = await fetch('process_payment.php', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    alertDiv.className = 'alert alert-success';
+                    alertDiv.style.display = 'block';
+                    alertDiv.innerHTML = '<i class="fas fa-check-circle"></i> ' + result.message;
+                    
+                    setTimeout(() => {
+                        window.location.href = 'riwayat.php';
+                    }, 2000);
+                } else {
+                    alertDiv.className = 'alert alert-error';
+                    alertDiv.style.display = 'block';
+                    alertDiv.innerHTML = '<i class="fas fa-exclamation-circle"></i> ' + result.message;
+                }
+            } catch (error) {
+                alertDiv.className = 'alert alert-error';
+                alertDiv.style.display = 'block';
+                alertDiv.innerHTML = '<i class="fas fa-exclamation-circle"></i> Terjadi kesalahan. Silakan coba lagi.';
+            }
+        });
+    </script>
+</body>
+</html>
