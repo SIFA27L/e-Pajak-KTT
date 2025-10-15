@@ -1,5 +1,7 @@
 <?php
 // General Configuration
+// Set session cookie to work across all paths
+ini_set('session.cookie_path', '/');
 session_start();
 
 // Helper function to get path to login

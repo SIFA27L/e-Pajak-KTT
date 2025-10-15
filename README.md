@@ -2,7 +2,59 @@
 
 Website pembayaran pajak online yang modern, aman, dan user-friendly untuk memudahkan wajib pajak dalam melakukan pembayaran pajak secara online.
 
-## 🚀 Fitur Utama
+## � Struktur Folder
+
+```
+e-pajak_KTT/
+├── pages/              # Semua halaman utama aplikasi
+│   ├── dashboard.php       # Dashboard dengan statistik & charts
+│   ├── jenis_pajak.php     # Informasi jenis pajak Indonesia
+│   ├── pembayaran.php      # Form pembayaran pajak
+│   ├── riwayat.php         # Riwayat pembayaran
+│   ├── laporan.php         # Generate laporan PDF
+│   ├── users.php           # User management (admin only)
+│   └── profile.php         # Profil & pengaturan user
+│
+├── api/                # API endpoints & AJAX handlers
+│   ├── process_payment.php     # Process pembayaran
+│   ├── ajax-api.php            # General AJAX handler
+│   ├── get_user.php            # Get user data
+│   ├── update_user.php         # Update user
+│   ├── delete_user.php         # Delete user
+│   ├── toggle_user_status.php  # Toggle user status
+│   ├── generate_report.php     # Generate PDF report
+│   └── ping_session.php        # Keep session alive
+│
+├── auth/               # Authentication
+│   ├── login.php           # Halaman login
+│   ├── register.php        # Halaman registrasi
+│   ├── logout.php          # Logout handler
+│   ├── process_login.php   # Process login
+│   └── process_register.php # Process registrasi
+│
+├── config/             # Konfigurasi
+│   ├── config.php          # Main config & helper functions
+│   └── database.php        # Database connection
+│
+├── includes/           # Template parts
+│   ├── header.php          # Header dengan i18n & session manager
+│   ├── sidebar.php         # Sidebar navigation
+│   └── footer.php          # Footer
+│
+├── assets/             # Static files
+│   ├── css/
+│   │   └── style.css       # Main stylesheet
+│   └── js/
+│       ├── i18n.js         # Internationalization (ID/EN)
+│       └── session-manager.js  # Auto-logout manager
+│
+├── index.php           # Entry point → redirect ke auth/login.php
+├── database.sql        # Database schema & initial data
+├── reset_admin.sql     # Reset admin account
+└── README.md           # Dokumentasi
+```
+
+## �🚀 Fitur Utama
 
 ### Untuk User (Wajib Pajak)
 - ✅ **Registrasi & Login** - Sistem autentikasi yang aman
@@ -57,9 +109,20 @@ Website pembayaran pajak online yang modern, aman, dan user-friendly untuk memud
    ```
 
 4. **Jalankan Aplikasi**
+   
+   **Opsi 1: Menggunakan XAMPP/Apache**
    - Buka browser
    - Akses: `http://localhost/e-commerce/`
-   - Otomatis redirect ke halaman login
+   - Otomatis redirect ke halaman login (`auth/login.php`)
+   
+   **Opsi 2: Menggunakan PHP Built-in Server (Development)**
+   ```bash
+   cd path/to/e-pajak_KTT
+   php -S localhost:8000
+   ```
+   - Buka browser
+   - Akses: `http://localhost:8000/`
+   - Otomatis redirect ke halaman login (`auth/login.php`)
 
 5. **Reset Admin (Jika diperlukan)**
    - Jika ada akun admin lama, jalankan: `reset_admin.sql`
