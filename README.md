@@ -262,7 +262,33 @@ Sistem sudah siap diintegrasikan dengan:
 - Cek username dan password
 - Pastikan akun status 'active'
 
-## 📝 License
+## � Struktur Project yang Terorganisir
+
+Project ini menggunakan struktur folder yang clean dan modular:
+- **pages/** - Halaman UI yang diakses user
+- **api/** - Endpoint backend untuk AJAX dan form processing
+- **auth/** - Sistem autentikasi (login, register, logout)
+- **config/** - Konfigurasi aplikasi dan database
+- **includes/** - Component yang reusable (header, sidebar, footer)
+- **assets/** - File static (CSS, JS, images)
+- **uploads/** - Directory untuk file upload user
+
+### Best Practices:
+- ✅ Semua session cookie menggunakan path='/' untuk konsistensi
+- ✅ Dynamic path resolution dengan `$pathPrefix`
+- ✅ Separation of concerns (UI, API, Auth terpisah)
+- ✅ Reusable components di folder includes/
+- ✅ `.gitignore` untuk mencegah file temporary masuk repository
+
+## 🧪 Testing
+
+Dokumentasi testing lengkap tersedia di `TESTING_RESULTS.md` yang mencakup:
+- 30+ test cases untuk semua fitur
+- Automated testing results
+- Manual testing checklist
+- Server logs verification
+
+## �📝 License
 
 © 2025 TAK ADA LISENSI
 
@@ -273,3 +299,13 @@ Developed with 💥 by KTT Indonesia IT Team
 ---
 
 **Catatan:** Sistem ini dibuat untuk keperluan edukasi dan demo tugas di Kampus UNINDRA dari TIM KTT.
+
+## 📊 Project Statistics
+
+- **Total Files**: 33 PHP files
+- **Folders**: 7 organized directories
+- **Lines of Code**: 7,000+ lines
+- **Features**: 15+ major features
+- **Languages**: PHP, MySQL, JavaScript
+- **Framework**: Vanilla PHP (No framework)
+- **Architecture**: MVC-inspired structure
