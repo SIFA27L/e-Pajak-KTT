@@ -29,6 +29,19 @@ body {
     line-height: 1.6;
 }
 
+/* Prevent flash/blinking during i18n initialization */
+body:not(.i18n-ready) [data-i18n],
+body:not(.i18n-ready) [data-i18n-placeholder],
+body:not(.i18n-ready) [data-i18n-title] {
+    visibility: hidden;
+}
+
+body.i18n-ready [data-i18n],
+body.i18n-ready [data-i18n-placeholder],
+body.i18n-ready [data-i18n-title] {
+    visibility: visible;
+}
+
 /* ================================================
    BASE STYLES - DESKTOP FIRST APPROACH
    Default untuk desktop, override di media queries untuk mobile
@@ -49,6 +62,11 @@ body {
     z-index: 1000;
     box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
     transform: translateX(0); /* Desktop: always visible */
+}
+
+/* Disable transition on page load to prevent flash */
+.sidebar:not(.transition-enabled) {
+    transition: none !important;
 }
 
 /* Sidebar Collapsed State (Desktop) */

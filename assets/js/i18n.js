@@ -999,6 +999,9 @@ function initializeI18n() {
             btn.classList.remove('active');
         }
     });
+    
+    // Mark i18n as ready to prevent flash
+    document.body.classList.add('i18n-ready');
 }
 
 // Also run a quick update immediately for early-loaded elements

@@ -1,4 +1,21 @@
 <div class="sidebar" id="sidebar">
+    <!-- Restore sidebar state immediately to prevent flash -->
+    <script>
+        (function() {
+            if (window.innerWidth > 1024) {
+                const isCollapsed = localStorage.getItem('sidebarCollapsed') === 'true';
+                if (isCollapsed) {
+                    document.getElementById('sidebar').classList.add('collapsed');
+                    // Main content will be updated when DOM is ready
+                }
+            }
+            // Enable transitions after a brief delay to prevent flash
+            setTimeout(function() {
+                document.getElementById('sidebar').classList.add('transition-enabled');
+            }, 50);
+        })();
+    </script>
+    
     <div class="sidebar-header">
         <div class="logo">
             <i class="fas fa-landmark"></i>
@@ -158,13 +175,12 @@
             console.log('Sidebar closed via overlay click');
         });
 
-        // Restore sidebar state dari localStorage saat page load (hanya untuk desktop)
+        // Update main-content class to match sidebar state (sidebar itself already restored via inline script)
         if (window.innerWidth > 1024) {
             const isCollapsed = localStorage.getItem('sidebarCollapsed') === 'true';
-            if (isCollapsed) {
-                sidebar.classList.add('collapsed');
+            if (isCollapsed && sidebar.classList.contains('collapsed')) {
                 mainContent.classList.add('sidebar-collapsed');
-                console.log('Restored collapsed state from localStorage');
+                console.log('Updated main-content for collapsed state');
             }
         }
 
