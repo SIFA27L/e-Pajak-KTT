@@ -85,7 +85,7 @@ $role = $_SESSION['role'];
         .btn-generate {
             width: 100%;
             padding: 12px;
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
             color: white;
             border: none;
             border-radius: 8px;
@@ -114,7 +114,7 @@ $role = $_SESSION['role'];
             <div class="report-options">
                 <!-- Laporan Bulanan -->
                 <div class="report-card">
-                    <div class="report-icon" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
+                    <div class="report-icon" style="background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);">
                         <i class="fas fa-calendar-alt"></i>
                     </div>
                     <div class="report-title" data-i18n="report.monthly_title">Laporan Bulanan</div>
@@ -151,7 +151,7 @@ $role = $_SESSION['role'];
 
                 <!-- Laporan Tahunan -->
                 <div class="report-card">
-                    <div class="report-icon" style="background: linear-gradient(135deg, #34d399 0%, #10b981 100%);">
+                    <div class="report-icon" style="background: linear-gradient(135deg, #38bdf8 0%, #0ea5e9 100%);">
                         <i class="fas fa-chart-line"></i>
                     </div>
                     <div class="report-title" data-i18n="report.yearly_title">Laporan Tahunan</div>
@@ -177,7 +177,7 @@ $role = $_SESSION['role'];
 
                 <!-- Laporan Custom -->
                 <div class="report-card">
-                    <div class="report-icon" style="background: linear-gradient(135deg, #6ee7b7 0%, #34d399 100%);">
+                    <div class="report-icon" style="background: linear-gradient(135deg, #7dd3fc 0%, #38bdf8 100%);">
                         <i class="fas fa-filter"></i>
                     </div>
                     <div class="report-title" data-i18n="report.custom_title">Laporan Custom</div>
@@ -233,7 +233,7 @@ $role = $_SESSION['role'];
                 
                 <div class="stats-grid">
                     <div class="stat-card">
-                        <div class="stat-icon" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
+                        <div class="stat-icon" style="background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);">
                             <i class="fas fa-receipt"></i>
                         </div>
                         <div class="stat-details">
@@ -243,7 +243,7 @@ $role = $_SESSION['role'];
                     </div>
 
                     <div class="stat-card">
-                        <div class="stat-icon" style="background: linear-gradient(135deg, #34d399 0%, #10b981 100%);">
+                        <div class="stat-icon" style="background: linear-gradient(135deg, #38bdf8 0%, #0ea5e9 100%);">
                             <i class="fas fa-wallet"></i>
                         </div>
                         <div class="stat-details">
@@ -253,7 +253,7 @@ $role = $_SESSION['role'];
                     </div>
 
                     <div class="stat-card">
-                        <div class="stat-icon" style="background: linear-gradient(135deg, #6ee7b7 0%, #34d399 100%);">
+                        <div class="stat-icon" style="background: linear-gradient(135deg, #7dd3fc 0%, #38bdf8 100%);">
                             <i class="fas fa-chart-pie"></i>
                         </div>
                         <div class="stat-details">
@@ -263,7 +263,7 @@ $role = $_SESSION['role'];
                     </div>
 
                     <div class="stat-card">
-                        <div class="stat-icon" style="background: linear-gradient(135deg, #a7f3d0 0%, #6ee7b7 100%);">
+                        <div class="stat-icon" style="background: linear-gradient(135deg, #bae6fd 0%, #7dd3fc 100%);">
                             <i class="fas fa-arrow-up"></i>
                         </div>
                         <div class="stat-details">

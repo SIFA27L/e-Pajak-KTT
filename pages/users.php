@@ -390,7 +390,7 @@ $page_title = "Manajemen User";
 
         .badge.active {
             background: #d1fae5;
-            color: #065f46;
+            color: #0369a1;
         }
 
         .badge.inactive {
@@ -548,7 +548,7 @@ $page_title = "Manajemen User";
 
         .alert.success {
             background: #d1fae5;
-            color: #065f46;
+            color: #0369a1;
             border: 1px solid #0ea5e9;
         }
 

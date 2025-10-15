@@ -254,7 +254,7 @@ style.textContent = `
         position: fixed;
         top: 80px;
         right: -300px;
-        background: #10b981;
+        background: #0ea5e9;
         color: white;
         padding: 12px 20px;
         border-radius: 8px 0 0 8px;
@@ -297,7 +297,7 @@ style.textContent = `
         padding: 12px;
         background: #f9fafb;
         border-radius: 8px;
-        border-left: 3px solid #10b981;
+        border-left: 3px solid #0ea5e9;
     }
 
     .payment-info {

@@ -334,8 +334,8 @@ unset($_SESSION['logout_message']);
 
         .alert-success {
             background: #d1fae5;
-            color: #065f46;
-            border: 1px solid #a7f3d0;
+            color: #0369a1;
+            border: 1px solid #bae6fd;
         }
 
         .alert-warning {

@@ -107,7 +107,7 @@ if (isset($_POST['change_password'])) {
             width: 120px;
             height: 120px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -145,7 +145,7 @@ if (isset($_POST['change_password'])) {
         .stat-number {
             font-size: 1.5rem;
             font-weight: 700;
-            color: #10b981;
+            color: #0ea5e9;
         }
 
         .stat-label {
@@ -179,8 +179,8 @@ if (isset($_POST['change_password'])) {
         }
 
         .tab.active {
-            color: #10b981;
-            border-bottom-color: #10b981;
+            color: #0ea5e9;
+            border-bottom-color: #0ea5e9;
         }
 
         .tab-content {
@@ -212,7 +212,7 @@ if (isset($_POST['change_password'])) {
 
         .form-control:focus {
             outline: none;
-            border-color: #10b981;
+            border-color: #0ea5e9;
         }
 
         .form-row {
@@ -229,8 +229,8 @@ if (isset($_POST['change_password'])) {
 
         .alert-success {
             background: #d1fae5;
-            color: #065f46;
-            border: 1px solid #a7f3d0;
+            color: #0369a1;
+            border: 1px solid #bae6fd;
         }
 
         .alert-error {

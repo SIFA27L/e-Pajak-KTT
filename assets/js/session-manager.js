@@ -198,7 +198,7 @@ class SessionManager {
                 <div style="display: flex; gap: 10px; justify-content: center;">
                     <button id="continueSession" style="
                         padding: 12px 30px;
-                        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+                        background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
                         color: white;
                         border: none;
                         border-radius: 8px;
