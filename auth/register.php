@@ -16,6 +16,7 @@
         body {
             font-family: 'Inter', sans-serif;
             background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 50%, #7dd3fc 100%);
+            background-attachment: fixed;
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -24,6 +25,7 @@
             position: relative;
             overflow-x: hidden;
             overflow-y: auto;
+            margin: 0;
         }
 
         body::before {
