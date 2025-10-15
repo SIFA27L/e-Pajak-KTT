@@ -14,7 +14,36 @@
             <i class="fas fa-bars"></i>
         </button>
         <div class="page-title">
-            <h2><?php echo ucfirst(str_replace('.php', '', basename($_SERVER['PHP_SELF']))); ?></h2>
+            <?php
+            // Get current page
+            $current_page = basename($_SERVER['PHP_SELF']);
+            
+            // Map page to translation key
+            $page_titles = [
+                'dashboard.php' => 'dashboard.title',
+                'jenis_pajak.php' => 'tax.title',
+                'pembayaran.php' => 'payment.title',
+                'riwayat.php' => 'history.title',
+                'laporan.php' => 'report.title',
+                'profile.php' => 'profile.title',
+                'users.php' => 'users.title'
+            ];
+            
+            // Default Indonesian titles
+            $default_titles = [
+                'dashboard.php' => 'Dashboard',
+                'jenis_pajak.php' => 'Jenis Pajak Indonesia',
+                'pembayaran.php' => 'Pembayaran Pajak',
+                'riwayat.php' => 'Riwayat Pembayaran',
+                'laporan.php' => 'Laporan Pembayaran Pajak',
+                'profile.php' => 'Profil Saya',
+                'users.php' => 'Kelola Pengguna'
+            ];
+            
+            $i18n_key = $page_titles[$current_page] ?? '';
+            $default_title = $default_titles[$current_page] ?? ucfirst(str_replace('.php', '', $current_page));
+            ?>
+            <h2 <?php if ($i18n_key) echo 'data-i18n="' . $i18n_key . '"'; ?>><?php echo $default_title; ?></h2>
         </div>
     </div>
 
