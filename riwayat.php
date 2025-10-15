@@ -175,13 +175,21 @@ $payments = $stmt->fetchAll();
             white-space: nowrap;
             padding: 12px 24px;
             font-size: 0.95rem;
-            line-height: 1.4;
+            line-height: 1;
         }
 
         .btn-payment-action i {
             font-size: 0.95rem;
             display: inline-flex;
             align-items: center;
+            line-height: 1;
+            vertical-align: middle;
+        }
+
+        .btn-payment-action span {
+            display: inline-flex;
+            align-items: center;
+            line-height: 1;
         }
 
         /* Responsive button optimization for mobile */
