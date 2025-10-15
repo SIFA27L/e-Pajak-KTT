@@ -168,46 +168,20 @@ $payments = $stmt->fetchAll();
         /* Button payment action base */
         .btn-payment-action {
             margin-top: 20px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            white-space: nowrap;
             padding: 12px 24px;
             font-size: 0.95rem;
-            line-height: 1;
-        }
-
-        .btn-payment-action i {
-            font-size: 0.95rem;
-            display: inline-flex;
-            align-items: center;
-            line-height: 1;
-            vertical-align: middle;
-        }
-
-        .btn-payment-action span {
-            display: inline-flex;
-            align-items: center;
-            line-height: 1;
         }
 
         /* Responsive button optimization for mobile */
         @media (max-width: 768px) {
             .btn-payment-action,
             .empty-state .btn-primary {
-                padding: 8px 12px !important;
-                font-size: 0.85rem !important;
-                max-width: 200px;
+                padding: 10px 16px !important;
+                font-size: 0.9rem !important;
+                max-width: 220px;
                 min-width: auto;
                 width: auto;
                 height: auto;
-                line-height: 1.3;
-            }
-
-            .btn-payment-action i,
-            .empty-state .btn-primary i {
-                font-size: 0.85rem;
             }
 
             .filter-bar .btn-primary {
@@ -230,15 +204,9 @@ $payments = $stmt->fetchAll();
         @media (max-width: 480px) {
             .btn-payment-action,
             .empty-state .btn-primary {
-                padding: 7px 10px !important;
-                font-size: 0.78rem !important;
-                max-width: 170px;
-                gap: 5px;
-            }
-
-            .btn-payment-action i,
-            .empty-state .btn-primary i {
-                font-size: 0.78rem;
+                padding: 8px 12px !important;
+                font-size: 0.85rem !important;
+                max-width: 180px;
             }
 
             .filter-bar .btn-primary {
@@ -263,14 +231,9 @@ $payments = $stmt->fetchAll();
         @media (max-width: 1024px) and (orientation: landscape) {
             .btn-payment-action,
             .empty-state .btn-primary {
-                padding: 7px 12px !important;
-                font-size: 0.8rem !important;
+                padding: 8px 14px !important;
+                font-size: 0.85rem !important;
                 max-width: 200px;
-            }
-
-            .btn-payment-action i,
-            .empty-state .btn-primary i {
-                font-size: 0.8rem;
             }
 
             .filter-bar .btn-primary {
@@ -377,7 +340,7 @@ $payments = $stmt->fetchAll();
                     <h3 data-i18n="history.no_history_title">Belum Ada Riwayat Pembayaran</h3>
                     <p data-i18n="history.no_history_text">Anda belum melakukan pembayaran pajak. Klik tombol di bawah untuk melakukan pembayaran.</p>
                     <button class="btn-primary btn-payment-action" onclick="window.location.href='pembayaran.php'">
-                        <i class="fas fa-plus"></i> <span data-i18n="history.pay_now">Bayar Pajak Sekarang</span>
+                        <span data-i18n="history.pay_now">Bayar Pajak Sekarang</span>
                     </button>
                 </div>
                 <?php endif; ?>
