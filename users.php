@@ -104,15 +104,21 @@ $page_title = "Manajemen User";
             border-radius: 12px;
             margin-bottom: 20px;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            flex-direction: column;
+            gap: 15px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-filter-row {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
         }
 
         .search-box {
             position: relative;
             flex: 1;
-            max-width: 400px;
+            min-width: 250px;
         }
 
         .search-box input {
@@ -136,8 +142,9 @@ $page_title = "Manajemen User";
             color: #9ca3af;
         }
 
+        /* Desktop Filter Buttons */
         .filter-buttons {
-            display: flex;
+            display: none;
             gap: 10px;
         }
 
@@ -149,6 +156,7 @@ $page_title = "Manajemen User";
             cursor: pointer;
             font-weight: 500;
             transition: all 0.3s ease;
+            white-space: nowrap;
         }
 
         .filter-btn:hover {
@@ -160,6 +168,136 @@ $page_title = "Manajemen User";
             background: linear-gradient(135deg, #10b981 0%, #059669 100%);
             color: white;
             border-color: #10b981;
+        }
+
+        /* Mobile Filter Dropdown */
+        .filter-dropdown {
+            position: relative;
+            min-width: 200px;
+        }
+
+        .filter-dropdown-btn {
+            width: 100%;
+            padding: 10px 15px;
+            border: 2px solid #e5e7eb;
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+        }
+
+        .filter-dropdown-btn:hover {
+            border-color: #10b981;
+        }
+
+        .filter-dropdown-btn i {
+            transition: transform 0.3s ease;
+        }
+
+        .filter-dropdown-btn.active i {
+            transform: rotate(180deg);
+        }
+
+        .filter-dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            margin-top: 5px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+            display: none;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .filter-dropdown-menu.active {
+            display: block;
+        }
+
+        .filter-dropdown-item {
+            padding: 12px 15px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #f3f4f6;
+        }
+
+        .filter-dropdown-item:last-child {
+            border-bottom: none;
+        }
+
+        .filter-dropdown-item:hover {
+            background: #f9fafb;
+        }
+
+        .filter-dropdown-item.active {
+            background: #ecfdf5;
+            color: #10b981;
+            font-weight: 600;
+        }
+
+        .filter-dropdown-item i {
+            color: #10b981;
+            display: none;
+        }
+
+        .filter-dropdown-item.active i {
+            display: inline-block;
+        }
+
+        /* Desktop view - show buttons, hide dropdown */
+        @media (min-width: 992px) {
+            .users-header {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .search-filter-row {
+                flex: 1;
+                justify-content: flex-start;
+            }
+
+            .filter-buttons {
+                display: flex;
+            }
+
+            .filter-dropdown {
+                display: none;
+            }
+        }
+
+        /* Tablet and Mobile - show dropdown, hide buttons */
+        @media (max-width: 991px) {
+            .filter-buttons {
+                display: none !important;
+            }
+
+            .filter-dropdown {
+                display: block;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .search-filter-row {
+                flex-direction: column;
+            }
+
+            .search-box,
+            .filter-dropdown {
+                width: 100%;
+                min-width: auto;
+            }
         }
 
         .users-table-container {
@@ -489,10 +627,44 @@ $page_title = "Manajemen User";
 
             <!-- Search and Filter -->
             <div class="users-header">
-                <div class="search-box">
-                    <i class="fas fa-search"></i>
-                    <input type="text" id="searchInput" placeholder="Cari user berdasarkan nama, email, atau NPWP..." data-i18n-placeholder="users.search_placeholder">
+                <div class="search-filter-row">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchInput" placeholder="Cari user berdasarkan nama, email, atau NPWP..." data-i18n-placeholder="users.search_placeholder">
+                    </div>
+                    
+                    <!-- Mobile Filter Dropdown -->
+                    <div class="filter-dropdown">
+                        <button class="filter-dropdown-btn" id="filterDropdownBtn">
+                            <span id="filterDropdownText" data-i18n="users.all">Semua</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="filter-dropdown-menu" id="filterDropdownMenu">
+                            <div class="filter-dropdown-item active" data-filter="all">
+                                <span data-i18n="users.all">Semua</span>
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div class="filter-dropdown-item" data-filter="admin">
+                                <span data-i18n="users.admin">Admin</span>
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div class="filter-dropdown-item" data-filter="user">
+                                <span data-i18n="users.user">User</span>
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div class="filter-dropdown-item" data-filter="active">
+                                <span data-i18n="users.active">Aktif</span>
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div class="filter-dropdown-item" data-filter="inactive">
+                                <span data-i18n="users.inactive">Nonaktif</span>
+                                <i class="fas fa-check"></i>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
+                <!-- Desktop Filter Buttons -->
                 <div class="filter-buttons">
                     <button class="filter-btn active" data-filter="all" data-i18n="users.all">Semua</button>
                     <button class="filter-btn" data-filter="admin" data-i18n="users.admin">Admin</button>
@@ -629,7 +801,7 @@ $page_title = "Manajemen User";
             });
         });
 
-        // Filter functionality
+        // Filter functionality (Desktop buttons)
         document.querySelectorAll('.filter-btn').forEach(btn => {
             btn.addEventListener('click', function() {
                 // Update active button
@@ -637,19 +809,65 @@ $page_title = "Manajemen User";
                 this.classList.add('active');
 
                 const filter = this.dataset.filter;
-                const rows = document.querySelectorAll('#usersTableBody tr');
-
-                rows.forEach(row => {
-                    if (filter === 'all') {
-                        row.style.display = '';
-                    } else if (filter === 'admin' || filter === 'user') {
-                        row.style.display = row.dataset.role === filter ? '' : 'none';
-                    } else if (filter === 'active' || filter === 'inactive') {
-                        row.style.display = row.dataset.status === filter ? '' : 'none';
-                    }
-                });
+                applyFilter(filter);
             });
         });
+
+        // Mobile dropdown functionality
+        const filterDropdownBtn = document.getElementById('filterDropdownBtn');
+        const filterDropdownMenu = document.getElementById('filterDropdownMenu');
+        const filterDropdownText = document.getElementById('filterDropdownText');
+
+        // Toggle dropdown
+        filterDropdownBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            filterDropdownMenu.classList.toggle('active');
+            filterDropdownBtn.classList.toggle('active');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!filterDropdownBtn.contains(e.target) && !filterDropdownMenu.contains(e.target)) {
+                filterDropdownMenu.classList.remove('active');
+                filterDropdownBtn.classList.remove('active');
+            }
+        });
+
+        // Handle dropdown item click
+        document.querySelectorAll('.filter-dropdown-item').forEach(item => {
+            item.addEventListener('click', function() {
+                // Update active item
+                document.querySelectorAll('.filter-dropdown-item').forEach(i => i.classList.remove('active'));
+                this.classList.add('active');
+
+                // Update button text
+                const text = this.querySelector('span').textContent;
+                filterDropdownText.textContent = text;
+
+                // Apply filter
+                const filter = this.dataset.filter;
+                applyFilter(filter);
+
+                // Close dropdown
+                filterDropdownMenu.classList.remove('active');
+                filterDropdownBtn.classList.remove('active');
+            });
+        });
+
+        // Apply filter function
+        function applyFilter(filter) {
+            const rows = document.querySelectorAll('#usersTableBody tr');
+
+            rows.forEach(row => {
+                if (filter === 'all') {
+                    row.style.display = '';
+                } else if (filter === 'admin' || filter === 'user') {
+                    row.style.display = row.dataset.role === filter ? '' : 'none';
+                } else if (filter === 'active' || filter === 'inactive') {
+                    row.style.display = row.dataset.status === filter ? '' : 'none';
+                }
+            });
+        }
 
         // Edit user
         function editUser(userId) {
