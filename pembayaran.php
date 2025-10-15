@@ -154,7 +154,7 @@ if (isAdmin()) {
                     <div class="form-group">
                         <label for="payment_for"><span data-i18n="payment.for_user">Pembayaran untuk</span> <span class="required">*</span></label>
                         <select class="form-control" id="payment_for" name="payment_for" required>
-                            <option value="self">Akun Sendiri (<?php echo $_SESSION['full_name']; ?>)</option>
+                            <option value="self" data-i18n="payment.personal_payment" data-fullname="<?php echo htmlspecialchars($_SESSION['full_name']); ?>">Pembayaran Pribadi (<?php echo $_SESSION['full_name']; ?>)</option>
                             <option value="other_user" data-i18n="payment.select_user">Pilih Pengguna Lain</option>
                             <option value="manual" data-i18n="payment.manual_npwp">Input NPWP Manual</option>
                         </select>
@@ -353,6 +353,29 @@ if (isAdmin()) {
 
         document.getElementById('jumlah_pajak').addEventListener('input', calculateTotal);
         document.getElementById('denda').addEventListener('input', calculateTotal);
+
+        // Handle translation for personal payment option with dynamic name
+        function updatePersonalPaymentOption() {
+            const personalOption = document.querySelector('option[value="self"]');
+            if (personalOption) {
+                const fullName = personalOption.getAttribute('data-fullname');
+                const translationKey = personalOption.getAttribute('data-i18n');
+                if (translationKey && window.i18n) {
+                    const translatedText = window.i18n.t(translationKey);
+                    personalOption.textContent = `${translatedText} (${fullName})`;
+                }
+            }
+        }
+
+        // Update on language change
+        document.addEventListener('languageChanged', updatePersonalPaymentOption);
+        
+        // Initial update
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', updatePersonalPaymentOption);
+        } else {
+            updatePersonalPaymentOption();
+        }
 
         // Submit form
         document.getElementById('paymentForm').addEventListener('submit', async function(e) {
