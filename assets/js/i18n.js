@@ -62,6 +62,15 @@ const translations = {
         'tax.info_3': 'Pastikan NPWP Anda aktif dan valid sebelum melakukan pembayaran',
         'tax.info_4': 'Simpan bukti pembayaran pajak Anda sebagai arsip dan bukti pelaporan',
         'tax.as_regulated': 'Sesuai Ketentuan',
+        'tax.regulations_title': 'Ketentuan Umum Perpajakan',
+        'tax.reg_pph21': 'Dipotong oleh pemberi kerja setiap bulan dari gaji/upah karyawan',
+        'tax.reg_pph22': 'Dipungut atas kegiatan impor atau pembelian barang tertentu',
+        'tax.reg_pph23': 'Dipotong atas penghasilan dari modal, penyerahan jasa, atau hadiah dan penghargaan',
+        'tax.reg_pph25': 'Angsuran pajak yang dibayar sendiri setiap bulan',
+        'tax.reg_pph29': 'Pelunasan kekurangan pembayaran pajak saat pelaporan SPT Tahunan',
+        'tax.reg_ppn': 'Pajak yang dikenakan atas transaksi jual beli barang dan jasa kena pajak',
+        'tax.reg_ppnbm': 'Pajak tambahan untuk barang-barang mewah tertentu',
+        'tax.reg_pbb': 'Pajak tahunan atas kepemilikan tanah dan bangunan',
         'tax.pbb': 'PBB (Pajak Bumi & Bangunan)',
         'tax.pbb_desc': 'Pajak atas tanah dan bangunan',
         'tax.vehicle': 'Pajak Kendaraan Bermotor',
@@ -134,6 +143,12 @@ const translations = {
         // Report (Laporan)
         'report.title': 'Laporan Pembayaran Pajak',
         'report.subtitle': 'Generate laporan pembayaran pajak Anda dalam berbagai format',
+        'report.page_title': 'Laporan - KTT Indonesia',
+        'report.statistics_summary': 'Ringkasan Statistik',
+        'report.total_transactions': 'Total Transaksi',
+        'report.total_payments': 'Total Pembayaran',
+        'report.average_payment': 'Rata-rata Pembayaran',
+        'report.highest_payment': 'Pembayaran Tertinggi',
         'report.monthly_title': 'Laporan Bulanan',
         'report.monthly_desc': 'Generate laporan pembayaran pajak per bulan',
         'report.yearly_title': 'Laporan Tahunan',
@@ -327,6 +342,15 @@ const translations = {
         'tax.info_3': 'Make sure your NPWP is active and valid before making payment',
         'tax.info_4': 'Keep your tax payment receipt as an archive and proof of reporting',
         'tax.as_regulated': 'As Regulated',
+        'tax.regulations_title': 'General Tax Regulations',
+        'tax.reg_pph21': 'Withheld by employer monthly from employee salary/wages',
+        'tax.reg_pph22': 'Collected on import activities or purchase of certain goods',
+        'tax.reg_pph23': 'Withheld on income from capital, service delivery, or prizes and awards',
+        'tax.reg_pph25': 'Monthly tax installment paid by taxpayer',
+        'tax.reg_pph29': 'Settlement of tax payment shortfall when filing annual tax return',
+        'tax.reg_ppn': 'Tax imposed on buying and selling transactions of taxable goods and services',
+        'tax.reg_ppnbm': 'Additional tax for certain luxury goods',
+        'tax.reg_pbb': 'Annual tax on land and building ownership',
         'tax.pbb': 'Property Tax',
         'tax.pbb_desc': 'Tax on land and buildings',
         'tax.vehicle': 'Vehicle Tax',
@@ -399,6 +423,12 @@ const translations = {
         // Report
         'report.title': 'Tax Payment Report',
         'report.subtitle': 'Generate your tax payment reports in various formats',
+        'report.page_title': 'Report - KTT Indonesia',
+        'report.statistics_summary': 'Statistics Summary',
+        'report.total_transactions': 'Total Transactions',
+        'report.total_payments': 'Total Payments',
+        'report.average_payment': 'Average Payment',
+        'report.highest_payment': 'Highest Payment',
         'report.monthly_title': 'Monthly Report',
         'report.monthly_desc': 'Generate monthly tax payment report',
         'report.yearly_title': 'Yearly Report',
@@ -646,6 +676,13 @@ class I18n {
             const key = element.getAttribute('data-i18n-value');
             element.value = this.t(key);
         });
+
+        // Update page title if has data-i18n attribute
+        const titleElement = document.querySelector('title[data-i18n]');
+        if (titleElement) {
+            const key = titleElement.getAttribute('data-i18n');
+            document.title = this.t(key);
+        }
     }
 
     /**

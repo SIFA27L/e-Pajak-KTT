@@ -12,7 +12,7 @@ $role = $_SESSION['role'];
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laporan - KTT Indonesia</title>
+    <title data-i18n="report.page_title">Laporan - KTT Indonesia</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
@@ -206,7 +206,7 @@ $role = $_SESSION['role'];
             <!-- Quick Stats -->
             <div class="table-card" style="margin-top: 30px;">
                 <div class="table-header">
-                    <h3><i class="fas fa-chart-bar"></i> Ringkasan Statistik</h3>
+                    <h3><i class="fas fa-chart-bar"></i> <span data-i18n="report.statistics_summary">Ringkasan Statistik</span></h3>
                 </div>
                 
                 <?php
@@ -238,7 +238,7 @@ $role = $_SESSION['role'];
                         </div>
                         <div class="stat-details">
                             <h3><?php echo number_format($stats['total_transaksi']); ?></h3>
-                            <p>Total Transaksi</p>
+                            <p data-i18n="report.total_transactions">Total Transaksi</p>
                         </div>
                     </div>
 
@@ -248,7 +248,7 @@ $role = $_SESSION['role'];
                         </div>
                         <div class="stat-details">
                             <h3><?php echo formatRupiah($stats['total_pembayaran']); ?></h3>
-                            <p>Total Pembayaran</p>
+                            <p data-i18n="report.total_payments">Total Pembayaran</p>
                         </div>
                     </div>
 
@@ -258,7 +258,7 @@ $role = $_SESSION['role'];
                         </div>
                         <div class="stat-details">
                             <h3><?php echo formatRupiah($stats['rata_rata']); ?></h3>
-                            <p>Rata-rata Pembayaran</p>
+                            <p data-i18n="report.average_payment">Rata-rata Pembayaran</p>
                         </div>
                     </div>
 
@@ -268,7 +268,7 @@ $role = $_SESSION['role'];
                         </div>
                         <div class="stat-details">
                             <h3><?php echo formatRupiah($stats['tertinggi']); ?></h3>
-                            <p>Pembayaran Tertinggi</p>
+                            <p data-i18n="report.highest_payment">Pembayaran Tertinggi</p>
                         </div>
                     </div>
                 </div>

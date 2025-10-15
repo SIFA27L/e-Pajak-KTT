@@ -157,15 +157,15 @@ $jenisPajak = $stmt->fetchAll();
 
             <div class="pajak-grid">
                 <?php foreach ($jenisPajak as $pajak): ?>
-                <div class="pajak-card">
+                <div class="pajak-card" data-tax-code="<?php echo $pajak['kode_pajak']; ?>">
                     <div class="pajak-header">
                         <div class="pajak-code"><?php echo $pajak['kode_pajak']; ?></div>
                         <span class="badge <?php echo $pajak['status'] == 'active' ? 'badge-success' : 'badge-secondary'; ?>">
                             <?php echo ucfirst($pajak['status']); ?>
                         </span>
                     </div>
-                    <div class="pajak-title"><?php echo $pajak['nama_pajak']; ?></div>
-                    <div class="pajak-desc"><?php echo $pajak['deskripsi']; ?></div>
+                    <div class="pajak-title" data-i18n-dynamic="tax_name"><?php echo $pajak['nama_pajak']; ?></div>
+                    <div class="pajak-desc" data-i18n-dynamic="tax_desc"><?php echo $pajak['deskripsi']; ?></div>
                     <div class="pajak-info">
                         <div>
                             <?php if ($pajak['persentase'] > 0): ?>
@@ -183,39 +183,39 @@ $jenisPajak = $stmt->fetchAll();
             </div>
 
             <div class="info-section" style="margin-top: 30px;">
-                <h3><i class="fas fa-book"></i> Ketentuan Umum Perpajakan</h3>
+                <h3><i class="fas fa-book"></i> <span data-i18n="tax.regulations_title">Ketentuan Umum Perpajakan</span></h3>
                 <ul>
                     <li>
                         <i class="fas fa-angle-right"></i>
-                        <span><strong>PPh 21:</strong> Dipotong oleh pemberi kerja setiap bulan dari gaji/upah karyawan</span>
+                        <span><strong>PPh 21:</strong> <span data-i18n="tax.reg_pph21">Dipotong oleh pemberi kerja setiap bulan dari gaji/upah karyawan</span></span>
                     </li>
                     <li>
                         <i class="fas fa-angle-right"></i>
-                        <span><strong>PPh 22:</strong> Dipungut atas kegiatan impor atau pembelian barang tertentu</span>
+                        <span><strong>PPh 22:</strong> <span data-i18n="tax.reg_pph22">Dipungut atas kegiatan impor atau pembelian barang tertentu</span></span>
                     </li>
                     <li>
                         <i class="fas fa-angle-right"></i>
-                        <span><strong>PPh 23:</strong> Dipotong atas penghasilan dari modal, penyerahan jasa, atau hadiah dan penghargaan</span>
+                        <span><strong>PPh 23:</strong> <span data-i18n="tax.reg_pph23">Dipotong atas penghasilan dari modal, penyerahan jasa, atau hadiah dan penghargaan</span></span>
                     </li>
                     <li>
                         <i class="fas fa-angle-right"></i>
-                        <span><strong>PPh 25:</strong> Angsuran pajak yang dibayar sendiri setiap bulan</span>
+                        <span><strong>PPh 25:</strong> <span data-i18n="tax.reg_pph25">Angsuran pajak yang dibayar sendiri setiap bulan</span></span>
                     </li>
                     <li>
                         <i class="fas fa-angle-right"></i>
-                        <span><strong>PPh 29:</strong> Pelunasan kekurangan pembayaran pajak saat pelaporan SPT Tahunan</span>
+                        <span><strong>PPh 29:</strong> <span data-i18n="tax.reg_pph29">Pelunasan kekurangan pembayaran pajak saat pelaporan SPT Tahunan</span></span>
                     </li>
                     <li>
                         <i class="fas fa-angle-right"></i>
-                        <span><strong>PPN:</strong> Pajak yang dikenakan atas transaksi jual beli barang dan jasa kena pajak</span>
+                        <span><strong>PPN:</strong> <span data-i18n="tax.reg_ppn">Pajak yang dikenakan atas transaksi jual beli barang dan jasa kena pajak</span></span>
                     </li>
                     <li>
                         <i class="fas fa-angle-right"></i>
-                        <span><strong>PPnBM:</strong> Pajak tambahan untuk barang-barang mewah tertentu</span>
+                        <span><strong>PPnBM:</strong> <span data-i18n="tax.reg_ppnbm">Pajak tambahan untuk barang-barang mewah tertentu</span></span>
                     </li>
                     <li>
                         <i class="fas fa-angle-right"></i>
-                        <span><strong>PBB:</strong> Pajak tahunan atas kepemilikan tanah dan bangunan</span>
+                        <span><strong>PBB:</strong> <span data-i18n="tax.reg_pbb">Pajak tahunan atas kepemilikan tanah dan bangunan</span></span>
                     </li>
                 </ul>
             </div>
