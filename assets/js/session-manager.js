@@ -55,16 +55,38 @@ class SessionManager {
 
     pingServer() {
         // Send ping to server to keep session alive
+        const pingUrl = this.getPingUrl();
+        
         if (navigator.sendBeacon) {
-            navigator.sendBeacon('ping_session.php');
+            navigator.sendBeacon(pingUrl);
         } else {
-            fetch('ping_session.php', {
+            fetch(pingUrl, {
                 method: 'POST',
                 keepalive: true
             }).catch(() => {
                 // Ignore errors
             });
         }
+    }
+    
+    getPingUrl() {
+        // Detect if we're in a subfolder (pages/, api/, auth/)
+        const path = window.location.pathname;
+        if (path.includes('/pages/') || path.includes('/api/') || path.includes('/auth/')) {
+            return '../api/ping_session.php';
+        }
+        return 'api/ping_session.php';
+    }
+    
+    getLogoutUrl() {
+        // Detect current location and return appropriate logout path
+        const path = window.location.pathname;
+        if (path.includes('/pages/') || path.includes('/api/')) {
+            return '../auth/logout.php?reason=timeout';
+        } else if (path.includes('/auth/')) {
+            return 'logout.php?reason=timeout';
+        }
+        return 'auth/logout.php?reason=timeout';
     }
 
     startChecking() {
@@ -78,6 +100,9 @@ class SessionManager {
         const inactiveTime = Math.floor((now - this.lastActivity) / 1000);
         const remainingTime = this.timeout - inactiveTime;
 
+        // Check server-side session status
+        this.checkServerSession();
+
         // Show warning
         if (remainingTime <= this.warningTime && !this.warningShown) {
             this.showWarning(remainingTime);
@@ -87,6 +112,38 @@ class SessionManager {
         if (remainingTime <= 0) {
             this.logout();
         }
+    }
+    
+    checkServerSession() {
+        // Verify session is still valid on server
+        fetch(this.getPingUrl(), {
+            method: 'GET',
+            cache: 'no-cache'
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'expired' || data.status === 'invalid') {
+                // Server session expired, force logout
+                this.forceLogout();
+            }
+        })
+        .catch(() => {
+            // Network error, ignore but don't logout
+        });
+    }
+    
+    forceLogout() {
+        // Immediate logout without warning
+        if (this.checkTimer) {
+            clearInterval(this.checkTimer);
+        }
+        if (this.countdownTimer) {
+            clearInterval(this.countdownTimer);
+        }
+        
+        // Show message and redirect
+        alert('Sesi Anda telah berakhir. Silakan login kembali.');
+        window.location.href = this.getLogoutUrl();
     }
 
     createWarningModal() {
@@ -233,8 +290,8 @@ class SessionManager {
             clearInterval(this.countdownTimer);
         }
         
-        // Redirect to logout
-        window.location.href = 'logout.php?reason=timeout';
+        // Redirect to logout with correct path
+        window.location.href = this.getLogoutUrl();
     }
 
     destroy() {
@@ -257,16 +314,16 @@ if (typeof isProtectedPage !== 'undefined' && isProtectedPage) {
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', () => {
             window.sessionManager = new SessionManager({
-                timeout: 1800,      // 30 minutes
-                warningTime: 300,   // 5 minutes warning
-                checkInterval: 60000 // Check every 1 minute
+                timeout: 300,       // 5 minutes (same as server-side SESSION_TIMEOUT)
+                warningTime: 60,    // 1 minute warning
+                checkInterval: 10000 // Check every 10 seconds for better accuracy
             });
         });
     } else {
         window.sessionManager = new SessionManager({
-            timeout: 1800,
-            warningTime: 300,
-            checkInterval: 60000
+            timeout: 300,       // 5 minutes (same as server-side SESSION_TIMEOUT)
+            warningTime: 60,    // 1 minute warning
+            checkInterval: 10000 // Check every 10 seconds
         });
     }
 }
