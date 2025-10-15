@@ -271,21 +271,21 @@ $payments = $stmt->fetchAll();
         
         <div class="content-wrapper">
             <div class="page-header">
-                <h1>Riwayat Pembayaran</h1>
-                <p>Lihat semua riwayat pembayaran pajak Anda</p>
+                <h1 data-i18n="history.title">Riwayat Pembayaran</h1>
+                <p data-i18n="history.subtitle">Lihat semua riwayat pembayaran pajak Anda</p>
             </div>
 
             <div class="filter-bar">
-                <input type="text" id="searchInput" placeholder="Cari nomor pembayaran, NPWP...">
+                <input type="text" id="searchInput" placeholder="Cari nomor pembayaran, NPWP..." data-i18n-placeholder="history.search_placeholder">
                 <select id="statusFilter">
-                    <option value="">Semua Status</option>
-                    <option value="berhasil">Berhasil</option>
-                    <option value="pending">Pending</option>
-                    <option value="gagal">Gagal</option>
-                    <option value="dibatalkan">Dibatalkan</option>
+                    <option value="" data-i18n="history.all_status">Semua Status</option>
+                    <option value="berhasil" data-i18n="history.status_success">Berhasil</option>
+                    <option value="pending" data-i18n="history.status_pending">Pending</option>
+                    <option value="gagal" data-i18n="history.status_failed">Gagal</option>
+                    <option value="dibatalkan" data-i18n="history.status_cancelled">Dibatalkan</option>
                 </select>
                 <button class="btn-primary" onclick="window.location.href='pembayaran.php'">
-                    <i class="fas fa-plus"></i> Pembayaran Baru
+                    <i class="fas fa-plus"></i> <span data-i18n="history.new_payment">Pembayaran Baru</span>
                 </button>
             </div>
 
@@ -295,18 +295,18 @@ $payments = $stmt->fetchAll();
                     <table class="data-table" id="paymentsTable">
                         <thead>
                             <tr>
-                                <th>No. Pembayaran</th>
+                                <th data-i18n="history.payment_no">No. Pembayaran</th>
                                 <?php if ($role === 'superadmin'): ?>
-                                <th>Nama Wajib Pajak</th>
+                                <th data-i18n="history.taxpayer_name">Nama Wajib Pajak</th>
                                 <?php endif; ?>
-                                <th>Jenis Pajak</th>
+                                <th data-i18n="history.tax_type">Jenis Pajak</th>
                                 <th>NPWP</th>
-                                <th>Periode</th>
-                                <th>Total</th>
-                                <th>Metode</th>
-                                <th>Status</th>
-                                <th>Tanggal</th>
-                                <th>Aksi</th>
+                                <th data-i18n="history.period">Periode</th>
+                                <th data-i18n="history.total">Total</th>
+                                <th data-i18n="history.method">Metode</th>
+                                <th data-i18n="history.status">Status</th>
+                                <th data-i18n="history.date">Tanggal</th>
+                                <th data-i18n="history.action">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -357,10 +357,10 @@ $payments = $stmt->fetchAll();
                 <?php else: ?>
                 <div class="empty-state">
                     <i class="fas fa-inbox"></i>
-                    <h3>Belum Ada Riwayat Pembayaran</h3>
-                    <p>Anda belum melakukan pembayaran pajak. Klik tombol di bawah untuk melakukan pembayaran.</p>
+                    <h3 data-i18n="history.no_history_title">Belum Ada Riwayat Pembayaran</h3>
+                    <p data-i18n="history.no_history_text">Anda belum melakukan pembayaran pajak. Klik tombol di bawah untuk melakukan pembayaran.</p>
                     <button class="btn-primary btn-payment-action" onclick="window.location.href='pembayaran.php'">
-                        <i class="fas fa-plus"></i> Bayar Pajak Sekarang
+                        <i class="fas fa-plus"></i> <span data-i18n="history.pay_now">Bayar Pajak Sekarang</span>
                     </button>
                 </div>
                 <?php endif; ?>
@@ -374,7 +374,7 @@ $payments = $stmt->fetchAll();
     <div class="modal" id="detailModal">
         <div class="modal-content">
             <div class="modal-header">
-                <h3><i class="fas fa-file-invoice"></i> Detail Pembayaran</h3>
+                <h3><i class="fas fa-file-invoice"></i> <span data-i18n="history.payment_detail">Detail Pembayaran</span></h3>
                 <button class="modal-close" onclick="closeModal()">&times;</button>
             </div>
             <div id="modalBody"></div>
