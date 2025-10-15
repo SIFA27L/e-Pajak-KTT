@@ -273,7 +273,15 @@ $jenisPajak = $stmt->fetchAll();
 
             <div class="pajak-grid">
                 <?php foreach ($jenisPajak as $pajak): 
-                    $taxCode = strtolower(str_replace([' ', '-'], '_', $pajak['kode_pajak']));
+                    // Convert tax code to translation key format
+                    // PPh21 -> pph_21, PPh22 -> pph_22, PPN -> ppn, PPnBM -> ppnbm, PBB -> pbb
+                    $code = $pajak['kode_pajak'];
+                    $taxCode = strtolower($code);
+                    
+                    // Add underscore between letters and numbers for PPh codes
+                    if (preg_match('/^(pph)(\d+)$/i', $taxCode, $matches)) {
+                        $taxCode = strtolower($matches[1]) . '_' . $matches[2];
+                    }
                 ?>
                 <div class="pajak-card" data-tax-code="<?php echo $pajak['kode_pajak']; ?>">
                     <div class="pajak-header">
