@@ -62,15 +62,104 @@ const translations = {
         'tax.info_3': 'Pastikan NPWP Anda aktif dan valid sebelum melakukan pembayaran',
         'tax.info_4': 'Simpan bukti pembayaran pajak Anda sebagai arsip dan bukti pelaporan',
         'tax.as_regulated': 'Sesuai Ketentuan',
+        'tax.pay_now': 'Bayar',
+        
+        // Tax Card Names and Descriptions
+        'tax.pph_21_name': 'PPh Pasal 21',
+        'tax.pph_21_desc': 'Pajak atas penghasilan berupa gaji, upah, honorarium, dan tunjangan',
+        'tax.pph_22_name': 'PPh Pasal 22',
+        'tax.pph_22_desc': 'Pajak yang dipungut atas kegiatan impor atau pembelian barang',
+        'tax.pph_23_name': 'PPh Pasal 23',
+        'tax.pph_23_desc': 'Pajak atas penghasilan dari modal, penyerahan jasa, atau hadiah',
+        'tax.pph_25_name': 'PPh Pasal 25',
+        'tax.pph_25_desc': 'Angsuran pajak penghasilan yang dibayar sendiri setiap bulan',
+        'tax.pph_29_name': 'PPh Pasal 29',
+        'tax.pph_29_desc': 'Pelunasan kekurangan pembayaran pajak pada akhir tahun',
+        'tax.ppn_name': 'PPN (Pajak Pertambahan Nilai)',
+        'tax.ppn_desc': 'Pajak atas konsumsi barang dan jasa kena pajak',
+        'tax.ppnbm_name': 'PPnBM',
+        'tax.ppnbm_desc': 'Pajak tambahan atas barang-barang mewah tertentu',
+        'tax.pbb_name': 'PBB (Pajak Bumi dan Bangunan)',
+        'tax.pbb_desc': 'Pajak atas kepemilikan atau pemanfaatan tanah dan bangunan',
+        
+        // Tax Regulations Accordion
         'tax.regulations_title': 'Ketentuan Umum Perpajakan',
-        'tax.reg_pph21': 'Dipotong oleh pemberi kerja setiap bulan dari gaji/upah karyawan',
-        'tax.reg_pph22': 'Dipungut atas kegiatan impor atau pembelian barang tertentu',
-        'tax.reg_pph23': 'Dipotong atas penghasilan dari modal, penyerahan jasa, atau hadiah dan penghargaan',
-        'tax.reg_pph25': 'Angsuran pajak yang dibayar sendiri setiap bulan',
-        'tax.reg_pph29': 'Pelunasan kekurangan pembayaran pajak saat pelaporan SPT Tahunan',
-        'tax.reg_ppn': 'Pajak yang dikenakan atas transaksi jual beli barang dan jasa kena pajak',
-        'tax.reg_ppnbm': 'Pajak tambahan untuk barang-barang mewah tertentu',
-        'tax.reg_pbb': 'Pajak tahunan atas kepemilikan tanah dan bangunan',
+        'tax.regulations_subtitle': 'Klik pada setiap jenis pajak untuk melihat informasi detail',
+        
+        // Common Section Titles
+        'tax.subject_title': 'Subjek Pajak:',
+        'tax.object_title': 'Objek Pajak:',
+        'tax.calculation_title': 'Cara Perhitungan:',
+        'tax.rate_title': 'Tarif:',
+        'tax.services_title': 'Jenis Jasa:',
+        'tax.payment_title': 'Pembayaran:',
+        'tax.reporting_title': 'Pelaporan:',
+        'tax.luxury_goods_title': 'Barang Mewah:',
+        'tax.property_types_title': 'Jenis Properti:',
+        
+        // PPh 21 Details
+        'tax.reg_pph21_title': 'Pajak Penghasilan Pasal 21',
+        'tax.reg_pph21_detail': 'Pajak atas penghasilan berupa gaji, upah, honorarium, tunjangan, dan pembayaran lain yang diterima oleh pegawai, bukan pegawai, atau pensiunan.',
+        'tax.reg_pph21_subject1': 'Pegawai tetap dan pegawai tidak tetap',
+        'tax.reg_pph21_subject2': 'Penerima pensiun dan mantan pegawai',
+        'tax.reg_pph21_subject3': 'Bukan pegawai yang menerima penghasilan',
+        'tax.reg_pph21_calculation': 'Penghasilan bruto dikurangi dengan biaya jabatan (5%) dan iuran pensiun, kemudian dikurangi PTKP. Hasil tersebut dikalikan dengan tarif progresif PPh sesuai lapisan penghasilan.',
+        
+        // PPh 22 Details
+        'tax.reg_pph22_title': 'Pajak Penghasilan Pasal 22',
+        'tax.reg_pph22_detail': 'Pajak yang dipungut oleh bendahara pemerintah, badan tertentu, atau wajib pajak badan tertentu atas pembelian barang.',
+        'tax.reg_pph22_object1': 'Impor barang',
+        'tax.reg_pph22_object2': 'Pembelian barang oleh bendahara pemerintah',
+        'tax.reg_pph22_object3': 'Penjualan hasil produksi industri tertentu',
+        'tax.reg_pph22_rate': 'Bervariasi antara 0.25% - 7.5% tergantung jenis transaksi dan status wajib pajak (memiliki API atau tidak).',
+        
+        // PPh 23 Details
+        'tax.reg_pph23_title': 'Pajak Penghasilan Pasal 23',
+        'tax.reg_pph23_detail': 'Pajak yang dipotong atas penghasilan yang berasal dari modal, penyerahan jasa, atau penyelenggaraan kegiatan selain yang telah dipotong PPh Pasal 21.',
+        'tax.reg_pph23_service1': 'Jasa teknik, manajemen, konstruksi, dan konsultan',
+        'tax.reg_pph23_service2': 'Sewa dan penghasilan lain sehubungan dengan penggunaan harta',
+        'tax.reg_pph23_service3': 'Dividen, bunga, royalti, dan hadiah',
+        'tax.reg_pph23_rate': '2% untuk jasa dan 15% untuk dividen, bunga, royalti, dan hadiah (kecuali yang dikecualikan).',
+        
+        // PPh 25 Details
+        'tax.reg_pph25_title': 'Pajak Penghasilan Pasal 25',
+        'tax.reg_pph25_detail': 'Angsuran pajak yang harus dibayar sendiri oleh Wajib Pajak setiap bulan dalam tahun pajak berjalan.',
+        'tax.reg_pph25_payment1': 'Dibayar setiap bulan paling lambat tanggal 15 bulan berikutnya',
+        'tax.reg_pph25_payment2': 'Besarnya dihitung dari PPh terutang tahun lalu dikurangi kredit pajak, dibagi 12',
+        'tax.reg_pph25_payment3': 'Dapat menggunakan tarif 0.5% dari omzet untuk WP kriteria tertentu',
+        
+        // PPh 29 Details
+        'tax.reg_pph29_title': 'Pajak Penghasilan Pasal 29',
+        'tax.reg_pph29_detail': 'Kekurangan pembayaran pajak yang terutang dalam SPT Tahunan PPh, yaitu PPh terutang setelah dikurangi dengan kredit pajak (PPh Pasal 21, 22, 23, 24, dan angsuran PPh Pasal 25).',
+        'tax.reg_pph29_report1': 'Dibayar saat pelaporan SPT Tahunan PPh',
+        'tax.reg_pph29_report2': 'Batas waktu: 3 bulan setelah akhir tahun pajak untuk WP Orang Pribadi',
+        'tax.reg_pph29_report3': 'Batas waktu: 4 bulan setelah akhir tahun pajak untuk WP Badan',
+        
+        // PPN Details
+        'tax.reg_ppn_title': 'Pajak Pertambahan Nilai',
+        'tax.reg_ppn_detail': 'Pajak yang dikenakan atas konsumsi Barang Kena Pajak (BKP) dan/atau Jasa Kena Pajak (JKP) di dalam Daerah Pabean.',
+        'tax.reg_ppn_object1': 'Penyerahan BKP di dalam Daerah Pabean oleh Pengusaha',
+        'tax.reg_ppn_object2': 'Penyerahan JKP di dalam Daerah Pabean oleh Pengusaha',
+        'tax.reg_ppn_object3': 'Impor BKP',
+        'tax.reg_ppn_object4': 'Ekspor BKP/JKP oleh Pengusaha Kena Pajak',
+        'tax.reg_ppn_rate': '11% (berlaku sejak 1 April 2022), dapat dinaikkan menjadi 12% dan maksimal 15%.',
+        
+        // PPnBM Details
+        'tax.reg_ppnbm_title': 'Pajak Penjualan atas Barang Mewah',
+        'tax.reg_ppnbm_detail': 'Pajak yang dikenakan atas penyerahan atau impor Barang Kena Pajak yang tergolong mewah, baik yang dilakukan oleh produsen maupun diimpor.',
+        'tax.reg_ppnbm_goods1': 'Kendaraan bermotor dengan kapasitas isi silinder tertentu',
+        'tax.reg_ppnbm_goods2': 'Hunian mewah seperti apartemen, kondominium',
+        'tax.reg_ppnbm_goods3': 'Balon udara, pesawat, yacht, dan sejenisnya',
+        'tax.reg_ppnbm_goods4': 'Senjata api dan peluru, kecuali untuk keperluan negara',
+        'tax.reg_ppnbm_rate': 'Bervariasi antara 10% - 200% tergantung jenis barang mewah (berlaku di samping PPN).',
+        
+        // PBB Details
+        'tax.reg_pbb_title': 'Pajak Bumi dan Bangunan',
+        'tax.reg_pbb_detail': 'Pajak yang dikenakan atas kepemilikan atau pemanfaatan tanah dan/atau bangunan.',
+        'tax.reg_pbb_type1': 'Sektor perkebunan, perhutanan, pertambangan',
+        'tax.reg_pbb_type2': 'Sektor perkotaan dan perdesaan',
+        'tax.reg_pbb_type3': 'Termasuk tanah kosong, bangunan, dan kompleks bangunan',
+        'tax.reg_pbb_calculation': 'PBB terutang = 0.5% x (NJOP - NJOPTKP). NJOP adalah Nilai Jual Objek Pajak, sedangkan NJOPTKP adalah Nilai Jual Objek Pajak Tidak Kena Pajak (minimal Rp 10 juta, ditetapkan per daerah).',
         'tax.pbb': 'PBB (Pajak Bumi & Bangunan)',
         'tax.pbb_desc': 'Pajak atas tanah dan bangunan',
         'tax.vehicle': 'Pajak Kendaraan Bermotor',
@@ -371,24 +460,104 @@ const translations = {
         'tax.info_3': 'Make sure your NPWP is active and valid before making payment',
         'tax.info_4': 'Keep your tax payment receipt as an archive and proof of reporting',
         'tax.as_regulated': 'As Regulated',
-        'tax.regulations_title': 'General Tax Regulations',
-        'tax.reg_pph21': 'Withheld by employer monthly from employee salary/wages',
-        'tax.reg_pph22': 'Collected on import activities or purchase of certain goods',
-        'tax.reg_pph23': 'Withheld on income from capital, service delivery, or prizes and awards',
-        'tax.reg_pph25': 'Monthly tax installment paid by taxpayer',
-        'tax.reg_pph29': 'Settlement of tax payment shortfall when filing annual tax return',
-        'tax.reg_ppn': 'Tax imposed on buying and selling transactions of taxable goods and services',
-        'tax.reg_ppnbm': 'Additional tax for certain luxury goods',
-        'tax.reg_pbb': 'Annual tax on land and building ownership',
-        'tax.pbb': 'Property Tax',
-        'tax.pbb_desc': 'Tax on land and buildings',
-        'tax.vehicle': 'Vehicle Tax',
-        'tax.vehicle_desc': 'Annual motor vehicle tax',
-        'tax.income': 'Income Tax',
-        'tax.income_desc': 'Personal/corporate income tax',
-        'tax.business': 'Business Tax',
-        'tax.business_desc': 'Tax for business activities',
         'tax.pay_now': 'Pay',
+        
+        // Tax Card Names and Descriptions
+        'tax.pph_21_name': 'Income Tax Article 21',
+        'tax.pph_21_desc': 'Tax on income in the form of salaries, wages, honorariums, and allowances',
+        'tax.pph_22_name': 'Income Tax Article 22',
+        'tax.pph_22_desc': 'Tax collected on import activities or purchase of goods',
+        'tax.pph_23_name': 'Income Tax Article 23',
+        'tax.pph_23_desc': 'Tax on income from capital, service delivery, or prizes',
+        'tax.pph_25_name': 'Income Tax Article 25',
+        'tax.pph_25_desc': 'Monthly income tax installment paid by taxpayer',
+        'tax.pph_29_name': 'Income Tax Article 29',
+        'tax.pph_29_desc': 'Settlement of tax payment shortfall at year end',
+        'tax.ppn_name': 'VAT (Value Added Tax)',
+        'tax.ppn_desc': 'Tax on consumption of taxable goods and services',
+        'tax.ppnbm_name': 'Luxury Goods Sales Tax',
+        'tax.ppnbm_desc': 'Additional tax on certain luxury goods',
+        'tax.pbb_name': 'Property Tax',
+        'tax.pbb_desc': 'Tax on ownership or utilization of land and buildings',
+        
+        // Tax Regulations Accordion
+        'tax.regulations_title': 'General Tax Regulations',
+        'tax.regulations_subtitle': 'Click on each tax type to view detailed information',
+        
+        // Common Section Titles
+        'tax.subject_title': 'Tax Subject:',
+        'tax.object_title': 'Tax Object:',
+        'tax.calculation_title': 'Calculation Method:',
+        'tax.rate_title': 'Rate:',
+        'tax.services_title': 'Service Types:',
+        'tax.payment_title': 'Payment:',
+        'tax.reporting_title': 'Reporting:',
+        'tax.luxury_goods_title': 'Luxury Goods:',
+        'tax.property_types_title': 'Property Types:',
+        
+        // PPh 21 Details
+        'tax.reg_pph21_title': 'Income Tax Article 21',
+        'tax.reg_pph21_detail': 'Tax on income in the form of salaries, wages, honorariums, allowances, and other payments received by employees, non-employees, or pensioners.',
+        'tax.reg_pph21_subject1': 'Permanent and non-permanent employees',
+        'tax.reg_pph21_subject2': 'Pension recipients and former employees',
+        'tax.reg_pph21_subject3': 'Non-employees receiving income',
+        'tax.reg_pph21_calculation': 'Gross income is reduced by position costs (5%) and pension contributions, then reduced by PTKP. The result is multiplied by the progressive income tax rate according to income layers.',
+        
+        // PPh 22 Details
+        'tax.reg_pph22_title': 'Income Tax Article 22',
+        'tax.reg_pph22_detail': 'Tax collected by government treasurers, certain entities, or certain corporate taxpayers on the purchase of goods.',
+        'tax.reg_pph22_object1': 'Imported goods',
+        'tax.reg_pph22_object2': 'Purchase of goods by government treasurers',
+        'tax.reg_pph22_object3': 'Sale of certain industrial production results',
+        'tax.reg_pph22_rate': 'Varies between 0.25% - 7.5% depending on transaction type and taxpayer status (has API or not).',
+        
+        // PPh 23 Details
+        'tax.reg_pph23_title': 'Income Tax Article 23',
+        'tax.reg_pph23_detail': 'Tax withheld on income derived from capital, delivery of services, or conducting activities other than those already withheld under Article 21.',
+        'tax.reg_pph23_service1': 'Technical, management, construction, and consulting services',
+        'tax.reg_pph23_service2': 'Rent and other income related to property use',
+        'tax.reg_pph23_service3': 'Dividends, interest, royalties, and prizes',
+        'tax.reg_pph23_rate': '2% for services and 15% for dividends, interest, royalties, and prizes (except those exempted).',
+        
+        // PPh 25 Details
+        'tax.reg_pph25_title': 'Income Tax Article 25',
+        'tax.reg_pph25_detail': 'Tax installment that must be paid by the taxpayer every month during the current tax year.',
+        'tax.reg_pph25_payment1': 'Paid monthly no later than the 15th of the following month',
+        'tax.reg_pph25_payment2': 'Amount calculated from last year\'s tax payable minus tax credits, divided by 12',
+        'tax.reg_pph25_payment3': 'Can use a rate of 0.5% of turnover for taxpayers with certain criteria',
+        
+        // PPh 29 Details
+        'tax.reg_pph29_title': 'Income Tax Article 29',
+        'tax.reg_pph29_detail': 'Tax payment shortfall owed in the Annual Income Tax Return, namely tax payable after being reduced by tax credits (Income Tax Articles 21, 22, 23, 24, and installments of Income Tax Article 25).',
+        'tax.reg_pph29_report1': 'Paid when filing Annual Income Tax Return',
+        'tax.reg_pph29_report2': 'Deadline: 3 months after the end of the tax year for Individual Taxpayers',
+        'tax.reg_pph29_report3': 'Deadline: 4 months after the end of the tax year for Corporate Taxpayers',
+        
+        // PPN Details
+        'tax.reg_ppn_title': 'Value Added Tax',
+        'tax.reg_ppn_detail': 'Tax imposed on the consumption of Taxable Goods (BKP) and/or Taxable Services (JKP) within the Customs Area.',
+        'tax.reg_ppn_object1': 'Delivery of BKP within the Customs Area by Entrepreneurs',
+        'tax.reg_ppn_object2': 'Delivery of JKP within the Customs Area by Entrepreneurs',
+        'tax.reg_ppn_object3': 'Import of BKP',
+        'tax.reg_ppn_object4': 'Export of BKP/JKP by Taxable Entrepreneurs',
+        'tax.reg_ppn_rate': '11% (effective April 1, 2022), can be increased to 12% and maximum 15%.',
+        
+        // PPnBM Details
+        'tax.reg_ppnbm_title': 'Luxury Goods Sales Tax',
+        'tax.reg_ppnbm_detail': 'Tax imposed on the delivery or import of Taxable Goods classified as luxury, both by producers and importers.',
+        'tax.reg_ppnbm_goods1': 'Motor vehicles with certain cylinder capacity',
+        'tax.reg_ppnbm_goods2': 'Luxury residences such as apartments, condominiums',
+        'tax.reg_ppnbm_goods3': 'Hot air balloons, aircraft, yachts, and the like',
+        'tax.reg_ppnbm_goods4': 'Firearms and bullets, except for state purposes',
+        'tax.reg_ppnbm_rate': 'Varies between 10% - 200% depending on the type of luxury goods (applies in addition to VAT).',
+        
+        // PBB Details
+        'tax.reg_pbb_title': 'Land and Building Tax',
+        'tax.reg_pbb_detail': 'Tax imposed on the ownership or utilization of land and/or buildings.',
+        'tax.reg_pbb_type1': 'Plantation, forestry, mining sectors',
+        'tax.reg_pbb_type2': 'Urban and rural sectors',
+        'tax.reg_pbb_type3': 'Including vacant land, buildings, and building complexes',
+        'tax.reg_pbb_calculation': 'Property tax payable = 0.5% x (NJOP - NJOPTKP). NJOP is the Sales Value of Tax Object, while NJOPTKP is the Sales Value of Non-Taxable Tax Object (minimum IDR 10 million, determined per region).',
         'tax.details': 'Details',
         
         // Payment
