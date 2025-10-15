@@ -106,7 +106,7 @@ $pathPrefix = $isInSubfolder ? '../' : '';
             </li>
 
             <li>
-                <a href="<?php echo $pathPrefix; ?>auth/logout.php" data-i18n-title="menu.logout" onclick="return confirm(window.i18n ? window.i18n.t('msg.confirm_logout') : 'Yakin ingin logout?')">
+                <a href="#" data-i18n-title="menu.logout" onclick="event.preventDefault(); showLogoutModal('<?php echo $pathPrefix; ?>auth/logout.php')">
                     <i class="fas fa-sign-out-alt"></i>
                     <span data-i18n="menu.logout">Keluar</span>
                 </a>

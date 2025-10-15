@@ -114,7 +114,7 @@ if (!isset($pathPrefix)) {
                         <i class="fas fa-user-edit"></i>
                         <span data-i18n="dropdown.edit_profile">Edit Profil</span>
                     </a>
-                    <a href="<?php echo $pathPrefix; ?>auth/logout.php" class="dropdown-item logout-item">
+                    <a href="#" class="dropdown-item logout-item" onclick="event.preventDefault(); showLogoutModal('<?php echo $pathPrefix; ?>auth/logout.php')">
                         <i class="fas fa-sign-out-alt"></i>
                         <span data-i18n="dropdown.logout">Keluar</span>
                     </a>

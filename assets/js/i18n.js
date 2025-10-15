@@ -369,6 +369,13 @@ const translations = {
         'msg.payment_failed': 'Pembayaran gagal',
         'msg.language_changed': 'Bahasa diubah ke Indonesia',
         
+        // Modal
+        'modal.logout_title': 'Konfirmasi Logout',
+        'modal.logout_message': 'Apakah Anda yakin ingin keluar dari sistem?',
+        'modal.logout_info': 'Anda perlu login kembali untuk mengakses sistem.',
+        'modal.cancel': 'Batal',
+        'modal.confirm_logout': 'Ya, Logout',
+        
         // Date & Time
         'time.monday': 'Senin',
         'time.tuesday': 'Selasa',
@@ -756,6 +763,13 @@ const translations = {
         'msg.confirm_delete': 'Are you sure you want to delete?',
         'msg.confirm_logout': 'Are you sure you want to logout?',
         'msg.payment_success': 'Payment successful',
+        
+        // Modal
+        'modal.logout_title': 'Logout Confirmation',
+        'modal.logout_message': 'Are you sure you want to logout from the system?',
+        'modal.logout_info': 'You will need to login again to access the system.',
+        'modal.cancel': 'Cancel',
+        'modal.confirm_logout': 'Yes, Logout',
         'msg.payment_failed': 'Payment failed',
         'msg.language_changed': 'Language changed to English',
         
