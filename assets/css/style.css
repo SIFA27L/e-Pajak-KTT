@@ -215,6 +215,11 @@ body.i18n-ready [data-i18n-title] {
     white-space: nowrap;
 }
 
+/* Disable transition on page load to prevent swinging animation */
+.sidebar:not(.transition-enabled) .sidebar-menu li a {
+    transition: none !important;
+}
+
 .sidebar-menu li a i {
     font-size: 1.2rem;
     width: 25px;
@@ -224,6 +229,11 @@ body.i18n-ready [data-i18n-title] {
 
 .sidebar-menu li a span {
     transition: all 0.3s ease;
+}
+
+/* Disable span transition on page load */
+.sidebar:not(.transition-enabled) .sidebar-menu li a span {
+    transition: none !important;
 }
 
 .sidebar-menu li a:hover {
