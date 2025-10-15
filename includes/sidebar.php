@@ -1,3 +1,10 @@
+<?php
+// Detect if we're in a subfolder (pages, api, auth) to adjust paths
+$currentDir = dirname($_SERVER['SCRIPT_FILENAME']);
+$rootDir = dirname(__DIR__);
+$isInSubfolder = ($currentDir != $rootDir);
+$pathPrefix = $isInSubfolder ? '../' : '';
+?>
 <div class="sidebar" id="sidebar">
     <!-- Restore sidebar state immediately to prevent flash -->
     <script>
@@ -40,35 +47,35 @@
     <nav class="sidebar-menu">
         <ul>
             <li class="<?php echo basename($_SERVER['PHP_SELF']) == 'dashboard.php' ? 'active' : ''; ?>">
-                <a href="dashboard.php" data-i18n-title="menu.dashboard">
+                <a href="<?php echo $pathPrefix; ?>pages/dashboard.php" data-i18n-title="menu.dashboard">
                     <i class="fas fa-tachometer-alt"></i>
                     <span data-i18n="menu.dashboard">Dashboard</span>
                 </a>
             </li>
 
             <li class="<?php echo basename($_SERVER['PHP_SELF']) == 'pembayaran.php' ? 'active' : ''; ?>">
-                <a href="pembayaran.php" data-i18n-title="menu.payment">
+                <a href="<?php echo $pathPrefix; ?>pages/pembayaran.php" data-i18n-title="menu.payment">
                     <i class="fas fa-money-bill-wave"></i>
                     <span data-i18n="menu.payment">Pembayaran</span>
                 </a>
             </li>
 
             <li class="<?php echo basename($_SERVER['PHP_SELF']) == 'riwayat.php' ? 'active' : ''; ?>">
-                <a href="riwayat.php" data-i18n-title="menu.history">
+                <a href="<?php echo $pathPrefix; ?>pages/riwayat.php" data-i18n-title="menu.history">
                     <i class="fas fa-history"></i>
                     <span data-i18n="menu.history">Riwayat</span>
                 </a>
             </li>
 
             <li class="<?php echo basename($_SERVER['PHP_SELF']) == 'jenis_pajak.php' ? 'active' : ''; ?>">
-                <a href="jenis_pajak.php" data-i18n-title="menu.tax_types">
+                <a href="<?php echo $pathPrefix; ?>pages/jenis_pajak.php" data-i18n-title="menu.tax_types">
                     <i class="fas fa-list-alt"></i>
                     <span data-i18n="menu.tax_types">Jenis Pajak</span>
                 </a>
             </li>
 
             <li class="<?php echo basename($_SERVER['PHP_SELF']) == 'laporan.php' ? 'active' : ''; ?>">
-                <a href="laporan.php" data-i18n-title="menu.report">
+                <a href="<?php echo $pathPrefix; ?>pages/laporan.php" data-i18n-title="menu.report">
                     <i class="fas fa-file-alt"></i>
                     <span data-i18n="menu.report">Laporan</span>
                 </a>
@@ -80,7 +87,7 @@
             </li>
 
             <li class="<?php echo basename($_SERVER['PHP_SELF']) == 'users.php' ? 'active' : ''; ?>">
-                <a href="users.php" data-i18n-title="menu.users">
+                <a href="<?php echo $pathPrefix; ?>pages/users.php" data-i18n-title="menu.users">
                     <i class="fas fa-users"></i>
                     <span data-i18n="menu.users">Kelola Pengguna</span>
                 </a>
@@ -92,14 +99,14 @@
             </li>
 
             <li class="<?php echo basename($_SERVER['PHP_SELF']) == 'profile.php' ? 'active' : ''; ?>">
-                <a href="profile.php" data-i18n-title="menu.profile">
+                <a href="<?php echo $pathPrefix; ?>pages/profile.php" data-i18n-title="menu.profile">
                     <i class="fas fa-user-cog"></i>
                     <span data-i18n="menu.profile">Profil Saya</span>
                 </a>
             </li>
 
             <li>
-                <a href="logout.php" data-i18n-title="menu.logout" onclick="return confirm(window.i18n ? window.i18n.t('msg.confirm_logout') : 'Yakin ingin logout?')">
+                <a href="<?php echo $pathPrefix; ?>auth/logout.php" data-i18n-title="menu.logout" onclick="return confirm(window.i18n ? window.i18n.t('msg.confirm_logout') : 'Yakin ingin logout?')">
                     <i class="fas fa-sign-out-alt"></i>
                     <span data-i18n="menu.logout">Keluar</span>
                 </a>

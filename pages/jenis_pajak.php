@@ -1,5 +1,5 @@
 <?php
-require_once 'config/config.php';
+require_once '../config/config.php';
 requireLogin();
 
 $db = new Database();
@@ -18,7 +18,7 @@ $jenisPajak = $stmt->fetchAll();
     <title>Jenis Pajak - KTT Indonesia</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
     <style>
         .pajak-grid {
             display: grid;
@@ -238,10 +238,10 @@ $jenisPajak = $stmt->fetchAll();
     </style>
 </head>
 <body>
-    <?php include 'includes/sidebar.php'; ?>
+    <?php include '../includes/sidebar.php'; ?>
     
     <div class="main-content">
-        <?php include 'includes/header.php'; ?>
+        <?php include '../includes/header.php'; ?>
         
         <div class="content-wrapper">
             <div class="page-header">
@@ -543,7 +543,7 @@ $jenisPajak = $stmt->fetchAll();
             </script>
         </div>
 
-        <?php include 'includes/footer.php'; ?>
+        <?php include '../includes/footer.php'; ?>
     </div>
 </body>
 </html>

@@ -1,5 +1,5 @@
 <?php
-require_once 'config/config.php';
+require_once '../config/config.php';
 requireLogin();
 
 $db = new Database();
@@ -26,7 +26,7 @@ if (isAdmin()) {
     <title>Pembayaran Pajak - KTT Indonesia</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
     <style>
         .form-card {
             background: white;
@@ -124,10 +124,10 @@ if (isAdmin()) {
     </style>
 </head>
 <body>
-    <?php include 'includes/sidebar.php'; ?>
+    <?php include '../includes/sidebar.php'; ?>
     
     <div class="main-content">
-        <?php include 'includes/header.php'; ?>
+        <?php include '../includes/header.php'; ?>
         
         <div class="content-wrapper">
             <div class="page-header">
@@ -283,7 +283,7 @@ if (isAdmin()) {
             </div>
         </div>
 
-        <?php include 'includes/footer.php'; ?>
+        <?php include '../includes/footer.php'; ?>
     </div>
 
     <script>
@@ -418,7 +418,7 @@ if (isAdmin()) {
             const alertDiv = document.getElementById('alert');
             
             try {
-                const response = await fetch('process_payment.php', {
+                const response = await fetch('../api/process_payment.php', {
                     method: 'POST',
                     body: formData
                 });

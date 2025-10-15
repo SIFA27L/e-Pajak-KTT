@@ -4,7 +4,7 @@
  * Handles all AJAX requests for e-Pajak KTT
  */
 
-require_once 'config/config.php';
+require_once '../config/config.php';
 
 // Set JSON header
 header('Content-Type: application/json');

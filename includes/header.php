@@ -1,12 +1,21 @@
+<?php
+// Detect if we're in a subfolder to adjust paths
+if (!isset($pathPrefix)) {
+    $currentDir = dirname($_SERVER['SCRIPT_FILENAME']);
+    $rootDir = dirname(__DIR__);
+    $isInSubfolder = ($currentDir != $rootDir);
+    $pathPrefix = $isInSubfolder ? '../' : '';
+}
+?>
 <!-- Load i18n before other scripts -->
-<script src="assets/js/i18n.js"></script>
+<script src="<?php echo $pathPrefix; ?>assets/js/i18n.js"></script>
 
 <!-- Session Manager for auto-logout -->
 <script>
     // Mark this as a protected page
     var isProtectedPage = true;
 </script>
-<script src="assets/js/session-manager.js"></script>
+<script src="<?php echo $pathPrefix; ?>assets/js/session-manager.js"></script>
 
 <header class="header">
     <div class="header-left">
@@ -101,11 +110,11 @@
 
                 <!-- Menu Items -->
                 <div class="dropdown-menu-items">
-                    <a href="profile.php" class="dropdown-item">
+                    <a href="<?php echo $pathPrefix; ?>pages/profile.php" class="dropdown-item">
                         <i class="fas fa-user-edit"></i>
                         <span data-i18n="dropdown.edit_profile">Edit Profil</span>
                     </a>
-                    <a href="logout.php" class="dropdown-item logout-item">
+                    <a href="<?php echo $pathPrefix; ?>auth/logout.php" class="dropdown-item logout-item">
                         <i class="fas fa-sign-out-alt"></i>
                         <span data-i18n="dropdown.logout">Keluar</span>
                     </a>

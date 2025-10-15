@@ -9,7 +9,7 @@ header("Expires: Sat, 26 Jul 1997 05:00:00 GMT");
 
 // If already logged in, redirect to dashboard
 if (isset($_SESSION['user_id']) && !empty($_SESSION['user_id'])) {
-    header("Location: dashboard.php");
+    header("Location: ../pages/dashboard.php");
     exit();
 }
 
@@ -324,7 +324,7 @@ unset($_SESSION['logout_message']);
                     alertDiv.style.display = 'block';
                     alertDiv.textContent = result.message;
                     setTimeout(() => {
-                        window.location.href = 'dashboard.php';
+                        window.location.href = '../pages/dashboard.php';
                     }, 1000);
                 } else {
                     alertDiv.className = 'alert alert-error';

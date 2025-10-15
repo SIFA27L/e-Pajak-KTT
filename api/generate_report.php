@@ -1,5 +1,5 @@
 <?php
-require_once 'config/config.php';
+require_once '../config/config.php';
 requireLogin();
 
 // Simple PDF generation (you can use TCPDF or similar library for better results)

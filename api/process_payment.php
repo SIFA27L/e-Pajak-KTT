@@ -1,5 +1,5 @@
 <?php
-require_once 'config/config.php';
+require_once '../config/config.php';
 requireLogin();
 
 header('Content-Type: application/json');

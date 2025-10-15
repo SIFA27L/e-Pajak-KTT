@@ -1,9 +1,9 @@
 <?php
-require_once 'config/config.php';
+require_once '../config/config.php';
 
 // Check if user is logged in and is admin
 if (!isLoggedIn() || !isAdmin()) {
-    redirect('login.php');
+    redirect('../auth/login.php');
 }
 
 $db = new Database();
@@ -36,7 +36,7 @@ $page_title = "Manajemen User";
     <title><?php echo $page_title; ?> - KTT Indonesia</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
     <style>
         .users-stats {
             display: grid;
@@ -564,10 +564,10 @@ $page_title = "Manajemen User";
     </style>
 </head>
 <body>
-    <?php include 'includes/sidebar.php'; ?>
+    <?php include '../includes/sidebar.php'; ?>
     
     <div class="main-content">
-        <?php include 'includes/header.php'; ?>
+        <?php include '../includes/header.php'; ?>
         
         <div class="content-wrapper">
             <div class="alert" id="alertBox"></div>
@@ -746,7 +746,7 @@ $page_title = "Manajemen User";
             </div>
         </div>
 
-        <?php include 'includes/footer.php'; ?>
+        <?php include '../includes/footer.php'; ?>
     </div>
 
     <!-- Edit User Modal -->
@@ -871,7 +871,7 @@ $page_title = "Manajemen User";
 
         // Edit user
         function editUser(userId) {
-            fetch(`get_user.php?id=${userId}`)
+            fetch(`../api/get_user.php?id=${userId}`)
                 .then(response => response.json())
                 .then(data => {
                     if (data.success) {
@@ -902,7 +902,7 @@ $page_title = "Manajemen User";
             formData.append('role', document.getElementById('editRole').value);
 
             try {
-                const response = await fetch('update_user.php', {
+                const response = await fetch('../api/update_user.php', {
                     method: 'POST',
                     body: formData
                 });
@@ -927,7 +927,7 @@ $page_title = "Manajemen User";
             if (!confirm(`Apakah Anda yakin ingin ${action} user ini?`)) return;
 
             try {
-                const response = await fetch('toggle_user_status.php', {
+                const response = await fetch('../api/toggle_user_status.php', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -951,7 +951,7 @@ $page_title = "Manajemen User";
             if (!confirm(`Apakah Anda yakin ingin menghapus user "${userName}"?\n\nPeringatan: Semua data pembayaran user ini juga akan terhapus!`)) return;
 
             try {
-                const response = await fetch('delete_user.php', {
+                const response = await fetch('../api/delete_user.php', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'

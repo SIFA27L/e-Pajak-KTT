@@ -1,5 +1,5 @@
 <?php
-require_once 'config/config.php';
+require_once '../config/config.php';
 requireLogin();
 
 $db = new Database();
@@ -15,7 +15,7 @@ $role = $_SESSION['role'];
     <title data-i18n="report.page_title">Laporan - KTT Indonesia</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
     <style>
         .report-options {
             display: grid;
@@ -100,10 +100,10 @@ $role = $_SESSION['role'];
     </style>
 </head>
 <body>
-    <?php include 'includes/sidebar.php'; ?>
+    <?php include '../includes/sidebar.php'; ?>
     
     <div class="main-content">
-        <?php include 'includes/header.php'; ?>
+        <?php include '../includes/header.php'; ?>
         
         <div class="content-wrapper">
             <div class="page-header">
@@ -120,7 +120,7 @@ $role = $_SESSION['role'];
                     <div class="report-title" data-i18n="report.monthly_title">Laporan Bulanan</div>
                     <div class="report-desc" data-i18n="report.monthly_desc">Generate laporan pembayaran pajak per bulan</div>
                     
-                    <form action="generate_report.php" method="POST" target="_blank">
+                    <form action="../api/generate_report.php" method="POST" target="_blank">
                         <input type="hidden" name="type" value="monthly">
                         
                         <div class="form-group">
@@ -157,7 +157,7 @@ $role = $_SESSION['role'];
                     <div class="report-title" data-i18n="report.yearly_title">Laporan Tahunan</div>
                     <div class="report-desc" data-i18n="report.yearly_desc">Generate laporan pembayaran pajak per tahun</div>
                     
-                    <form action="generate_report.php" method="POST" target="_blank">
+                    <form action="../api/generate_report.php" method="POST" target="_blank">
                         <input type="hidden" name="type" value="yearly">
                         
                         <div class="form-group">
@@ -183,7 +183,7 @@ $role = $_SESSION['role'];
                     <div class="report-title" data-i18n="report.custom_title">Laporan Custom</div>
                     <div class="report-desc" data-i18n="report.custom_desc">Generate laporan dengan periode custom</div>
                     
-                    <form action="generate_report.php" method="POST" target="_blank">
+                    <form action="../api/generate_report.php" method="POST" target="_blank">
                         <input type="hidden" name="type" value="custom">
                         
                         <div class="form-group">
@@ -275,7 +275,7 @@ $role = $_SESSION['role'];
             </div>
         </div>
 
-        <?php include 'includes/footer.php'; ?>
+        <?php include '../includes/footer.php'; ?>
     </div>
 </body>
 </html>

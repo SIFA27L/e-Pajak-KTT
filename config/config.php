@@ -2,6 +2,14 @@
 // General Configuration
 session_start();
 
+// Helper function to get path to login
+function getLoginPath() {
+    $currentDir = dirname($_SERVER['SCRIPT_FILENAME']);
+    $rootDir = dirname(__DIR__);
+    $isInSubfolder = ($currentDir != $rootDir);
+    return $isInSubfolder ? '../auth/login.php' : 'auth/login.php';
+}
+
 // Session Timeout Configuration (in seconds)
 define('SESSION_TIMEOUT', 300); 
 // Check session timeout
@@ -15,7 +23,7 @@ if (isset($_SESSION['LAST_ACTIVITY'])) {
         // Set flash message for timeout
         session_start();
         $_SESSION['timeout_message'] = 'Sesi Anda telah berakhir karena tidak aktif. Silakan login kembali.';
-        header("Location: login.php");
+        header("Location: " . getLoginPath());
         exit();
     }
 }
@@ -79,7 +87,7 @@ function requireLogin() {
         session_start();
         $_SESSION['login_required'] = 'Silakan login untuk mengakses halaman ini.';
         
-        header("Location: login.php");
+        header("Location: " . getLoginPath());
         exit();
     }
 }
