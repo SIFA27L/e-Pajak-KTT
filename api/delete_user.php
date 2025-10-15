@@ -32,6 +32,22 @@ if ($user_id == $_SESSION['user_id']) {
 try {
     $db = new Database();
     $conn = $db->getConnection();
+    
+    // Check if user exists and is not a superadmin (extra safety)
+    $checkStmt = $conn->prepare("SELECT role FROM users WHERE id = :user_id");
+    $checkStmt->bindParam(':user_id', $user_id);
+    $checkStmt->execute();
+    
+    if ($checkStmt->rowCount() === 0) {
+        echo json_encode(['success' => false, 'message' => 'User tidak ditemukan']);
+        exit();
+    }
+    
+    $user = $checkStmt->fetch();
+    if ($user['role'] === 'superadmin' && !isSuperAdmin()) {
+        echo json_encode(['success' => false, 'message' => 'Hanya superadmin yang dapat menghapus akun superadmin lain!']);
+        exit();
+    }
 
     // Delete user (CASCADE will automatically delete related records)
     $stmt = $conn->prepare("DELETE FROM users WHERE id = :user_id");
