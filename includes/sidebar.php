@@ -9,10 +9,11 @@
                     // Main content will be updated when DOM is ready
                 }
             }
-            // Enable transitions after a brief delay to prevent flash
+            // Enable transitions after page fully loaded to prevent flash/swinging
             setTimeout(function() {
                 document.getElementById('sidebar').classList.add('transition-enabled');
-            }, 50);
+                document.body.classList.add('page-loaded');
+            }, 100);
         })();
     </script>
     

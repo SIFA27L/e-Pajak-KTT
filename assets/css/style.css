@@ -42,6 +42,12 @@ body.i18n-ready [data-i18n-title] {
     visibility: visible;
 }
 
+/* Prevent all transitions and animations during page load */
+body:not(.page-loaded) * {
+    transition: none !important;
+    animation: none !important;
+}
+
 /* ================================================
    BASE STYLES - DESKTOP FIRST APPROACH
    Default untuk desktop, override di media queries untuk mobile
