@@ -180,8 +180,18 @@ if (isAdmin()) {
                         <label for="jenis_pajak_id"><span data-i18n="payment.select_tax">Jenis Pajak</span> <span class="required">*</span></label>
                         <select class="form-control" id="jenis_pajak_id" name="jenis_pajak_id" required>
                             <option value="" data-i18n="payment.choose_tax">Pilih Jenis Pajak</option>
-                            <?php foreach ($jenisPajak as $jp): ?>
-                            <option value="<?php echo $jp['id']; ?>" data-persentase="<?php echo $jp['persentase']; ?>">
+                            <?php foreach ($jenisPajak as $jp): 
+                                // Convert tax code to translation key format
+                                $code = $jp['kode_pajak'];
+                                $taxCode = strtolower($code);
+                                if (preg_match('/^(pph)(\d+)$/i', $taxCode, $matches)) {
+                                    $taxCode = strtolower($matches[1]) . '_' . $matches[2];
+                                }
+                            ?>
+                            <option value="<?php echo $jp['id']; ?>" 
+                                    data-persentase="<?php echo $jp['persentase']; ?>"
+                                    data-tax-code="<?php echo $jp['kode_pajak']; ?>"
+                                    data-i18n="tax.<?php echo $taxCode; ?>_name">
                                 <?php echo $jp['kode_pajak']; ?> - <?php echo $jp['nama_pajak']; ?>
                             </option>
                             <?php endforeach; ?>
@@ -367,14 +377,37 @@ if (isAdmin()) {
             }
         }
 
+        // Handle translation for tax type dropdown options
+        function updateTaxTypeOptions() {
+            const taxSelect = document.getElementById('jenis_pajak_id');
+            if (taxSelect) {
+                const options = taxSelect.querySelectorAll('option[data-tax-code]');
+                options.forEach(option => {
+                    const taxCode = option.getAttribute('data-tax-code');
+                    const translationKey = option.getAttribute('data-i18n');
+                    if (translationKey && window.i18n) {
+                        const translatedName = window.i18n.t(translationKey);
+                        option.textContent = `${taxCode} - ${translatedName}`;
+                    }
+                });
+            }
+        }
+
         // Update on language change
-        document.addEventListener('languageChanged', updatePersonalPaymentOption);
+        document.addEventListener('languageChanged', function() {
+            updatePersonalPaymentOption();
+            updateTaxTypeOptions();
+        });
         
         // Initial update
         if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', updatePersonalPaymentOption);
+            document.addEventListener('DOMContentLoaded', function() {
+                updatePersonalPaymentOption();
+                updateTaxTypeOptions();
+            });
         } else {
             updatePersonalPaymentOption();
+            updateTaxTypeOptions();
         }
 
         // Submit form
