@@ -195,11 +195,12 @@ if (isAdmin()) {
                                    value="<?php echo $_SESSION['npwp']; ?>" 
                                    <?php echo !isAdmin() ? 'readonly' : ''; ?> 
                                    required 
-                                   placeholder="<?php echo isAdmin() ? 'NPWP akan terisi otomatis atau input manual' : ''; ?>">
+                                   placeholder="<?php echo isAdmin() ? 'NPWP akan terisi otomatis atau input manual' : ''; ?>" 
+                                   data-i18n-placeholder="payment.npwp_placeholder">
                         </div>
 
                         <div class="form-group">
-                            <label for="tahun_pajak">Tahun Pajak <span class="required">*</span></label>
+                            <label for="tahun_pajak"><span data-i18n="payment.tax_year">Tahun Pajak</span> <span class="required">*</span></label>
                             <select class="form-control" id="tahun_pajak" name="tahun_pajak" required>
                                 <?php for ($i = date('Y'); $i >= date('Y') - 5; $i--): ?>
                                 <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
@@ -209,64 +210,64 @@ if (isAdmin()) {
                     </div>
 
                     <div class="form-group">
-                        <label for="masa_pajak">Masa Pajak <span class="required">*</span></label>
+                        <label for="masa_pajak"><span data-i18n="payment.tax_period">Masa Pajak</span> <span class="required">*</span></label>
                         <select class="form-control" id="masa_pajak" name="masa_pajak" required>
-                            <option value="">Pilih Masa Pajak</option>
-                            <option value="Januari">Januari</option>
-                            <option value="Februari">Februari</option>
-                            <option value="Maret">Maret</option>
-                            <option value="April">April</option>
-                            <option value="Mei">Mei</option>
-                            <option value="Juni">Juni</option>
-                            <option value="Juli">Juli</option>
-                            <option value="Agustus">Agustus</option>
-                            <option value="September">September</option>
-                            <option value="Oktober">Oktober</option>
-                            <option value="November">November</option>
-                            <option value="Desember">Desember</option>
+                            <option value="" data-i18n="payment.choose_period">Pilih Masa Pajak</option>
+                            <option value="Januari" data-i18n="month.january">Januari</option>
+                            <option value="Februari" data-i18n="month.february">Februari</option>
+                            <option value="Maret" data-i18n="month.march">Maret</option>
+                            <option value="April" data-i18n="month.april">April</option>
+                            <option value="Mei" data-i18n="month.may">Mei</option>
+                            <option value="Juni" data-i18n="month.june">Juni</option>
+                            <option value="Juli" data-i18n="month.july">Juli</option>
+                            <option value="Agustus" data-i18n="month.august">Agustus</option>
+                            <option value="September" data-i18n="month.september">September</option>
+                            <option value="Oktober" data-i18n="month.october">Oktober</option>
+                            <option value="November" data-i18n="month.november">November</option>
+                            <option value="Desember" data-i18n="month.december">Desember</option>
                         </select>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="jumlah_pajak">Jumlah Pajak (Rp) <span class="required">*</span></label>
+                            <label for="jumlah_pajak"><span data-i18n="payment.tax_amount_label">Jumlah Pajak (Rp)</span> <span class="required">*</span></label>
                             <input type="number" class="form-control" id="jumlah_pajak" name="jumlah_pajak" min="0" step="1000" required>
                         </div>
 
                         <div class="form-group">
-                            <label for="denda">Denda (Rp)</label>
+                            <label for="denda"><span data-i18n="payment.penalty">Denda (Rp)</span></label>
                             <input type="number" class="form-control" id="denda" name="denda" value="0" min="0" step="1000">
                         </div>
                     </div>
 
                     <h3 style="margin: 30px 0 20px; color: #059669;">
-                        <i class="fas fa-credit-card"></i> Metode Pembayaran
+                        <i class="fas fa-credit-card"></i> <span data-i18n="payment.payment_method_title">Metode Pembayaran</span>
                     </h3>
 
                     <div class="form-group">
-                        <label for="metode_pembayaran">Pilih Metode Pembayaran <span class="required">*</span></label>
+                        <label for="metode_pembayaran"><span data-i18n="payment.choose_method">Pilih Metode Pembayaran</span> <span class="required">*</span></label>
                         <select class="form-control" id="metode_pembayaran" name="metode_pembayaran" required>
-                            <option value="">Pilih Metode</option>
-                            <option value="transfer_bank">Transfer Bank</option>
-                            <option value="virtual_account">Virtual Account</option>
-                            <option value="e_wallet">E-Wallet (OVO, GoPay, Dana)</option>
-                            <option value="kartu_kredit">Kartu Kredit</option>
+                            <option value="" data-i18n="payment.select_method">Pilih Metode</option>
+                            <option value="transfer_bank" data-i18n="payment.bank_transfer">Transfer Bank</option>
+                            <option value="virtual_account" data-i18n="payment.virtual_account">Virtual Account</option>
+                            <option value="e_wallet" data-i18n="payment.ewallet_detail">E-Wallet (OVO, GoPay, Dana)</option>
+                            <option value="kartu_kredit" data-i18n="payment.credit_card">Kartu Kredit</option>
                         </select>
                     </div>
 
                     <div class="form-group">
-                        <label for="keterangan">Keterangan (Opsional)</label>
-                        <textarea class="form-control" id="keterangan" name="keterangan" rows="3"></textarea>
+                        <label for="keterangan"><span data-i18n="payment.notes_label">Keterangan (Opsional)</span></label>
+                        <textarea class="form-control" id="keterangan" name="keterangan" rows="3" placeholder="" data-i18n-placeholder="payment.notes_placeholder"></textarea>
                     </div>
 
                     <div class="form-group" style="background: #f9fafb; padding: 15px; border-radius: 8px;">
-                        <h4 style="margin-bottom: 10px;">Total Pembayaran:</h4>
+                        <h4 style="margin-bottom: 10px;" data-i18n="payment.total_payment">Total Pembayaran:</h4>
                         <h2 id="total_display" style="color: #059669;">Rp 0</h2>
                         <input type="hidden" id="total_bayar" name="total_bayar" value="0">
                     </div>
 
                     <button type="submit" class="btn-submit">
-                        <i class="fas fa-paper-plane"></i> Proses Pembayaran
+                        <i class="fas fa-paper-plane"></i> <span data-i18n="payment.process_payment">Proses Pembayaran</span>
                     </button>
                 </form>
             </div>
