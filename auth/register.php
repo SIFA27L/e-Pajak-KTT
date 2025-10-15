@@ -22,7 +22,8 @@
             justify-content: center;
             padding: 40px 20px;
             position: relative;
-            overflow: hidden;
+            overflow-x: hidden;
+            overflow-y: auto;
         }
 
         body::before {
@@ -30,7 +31,7 @@
             position: absolute;
             width: 500px;
             height: 500px;
-            background: radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(14, 165, 233, 0.1) 0%, transparent 70%);
             border-radius: 50%;
             top: -200px;
             right: -200px;
@@ -42,7 +43,7 @@
             position: absolute;
             width: 400px;
             height: 400px;
-            background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(2, 132, 199, 0.1) 0%, transparent 70%);
             border-radius: 50%;
             bottom: -150px;
             left: -150px;
@@ -60,13 +61,14 @@
             backdrop-filter: blur(10px);
             border-radius: 24px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08), 0 0 1px rgba(0, 0, 0, 0.05);
-            overflow: hidden;
+            overflow: visible;
             max-width: 950px;
             width: 100%;
             padding: 50px 60px;
             position: relative;
             z-index: 1;
             border: 1px solid rgba(255, 255, 255, 0.3);
+            margin: auto;
         }
 
         .register-header {

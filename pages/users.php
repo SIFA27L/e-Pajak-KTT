@@ -67,19 +67,19 @@ $page_title = "Manajemen User";
         }
 
         .stat-icon.total {
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
         }
 
         .stat-icon.admin {
-            background: linear-gradient(135deg, #34d399 0%, #10b981 100%);
+            background: linear-gradient(135deg, #38bdf8 0%, #0ea5e9 100%);
         }
 
         .stat-icon.user {
-            background: linear-gradient(135deg, #6ee7b7 0%, #34d399 100%);
+            background: linear-gradient(135deg, #7dd3fc 0%, #38bdf8 100%);
         }
 
         .stat-icon.active {
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
         }
 
         .stat-icon.inactive {
@@ -131,7 +131,7 @@ $page_title = "Manajemen User";
 
         .search-box input:focus {
             outline: none;
-            border-color: #10b981;
+            border-color: #0ea5e9;
         }
 
         .search-box i {
@@ -160,14 +160,14 @@ $page_title = "Manajemen User";
         }
 
         .filter-btn:hover {
-            border-color: #10b981;
-            color: #10b981;
+            border-color: #0ea5e9;
+            color: #0ea5e9;
         }
 
         .filter-btn.active {
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
             color: white;
-            border-color: #10b981;
+            border-color: #0ea5e9;
         }
 
         /* Mobile Filter Dropdown */
@@ -191,7 +191,7 @@ $page_title = "Manajemen User";
         }
 
         .filter-dropdown-btn:hover {
-            border-color: #10b981;
+            border-color: #0ea5e9;
         }
 
         .filter-dropdown-btn i {
@@ -242,12 +242,12 @@ $page_title = "Manajemen User";
 
         .filter-dropdown-item.active {
             background: #ecfdf5;
-            color: #10b981;
+            color: #0ea5e9;
             font-weight: 600;
         }
 
         .filter-dropdown-item i {
-            color: #10b981;
+            color: #0ea5e9;
             display: none;
         }
 
@@ -313,7 +313,7 @@ $page_title = "Manajemen User";
         }
 
         .users-table thead {
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
             color: white;
         }
 
@@ -349,7 +349,7 @@ $page_title = "Manajemen User";
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -518,13 +518,13 @@ $page_title = "Manajemen User";
 
         .form-control:focus {
             outline: none;
-            border-color: #10b981;
+            border-color: #0ea5e9;
         }
 
         .btn-submit {
             width: 100%;
             padding: 12px;
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
             color: white;
             border: none;
             border-radius: 8px;
@@ -549,7 +549,7 @@ $page_title = "Manajemen User";
         .alert.success {
             background: #d1fae5;
             color: #065f46;
-            border: 1px solid #10b981;
+            border: 1px solid #0ea5e9;
         }
 
         .alert.error {

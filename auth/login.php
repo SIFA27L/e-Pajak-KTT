@@ -50,7 +50,8 @@ unset($_SESSION['logout_message']);
             justify-content: center;
             padding: 20px;
             position: relative;
-            overflow: hidden;
+            overflow-x: hidden;
+            overflow-y: auto;
         }
 
         body::before {

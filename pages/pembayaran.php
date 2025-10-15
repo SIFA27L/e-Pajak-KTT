@@ -62,7 +62,7 @@ if (isAdmin()) {
 
         .form-control:focus {
             outline: none;
-            border-color: #10b981;
+            border-color: #0ea5e9;
         }
 
         .form-row {
@@ -74,7 +74,7 @@ if (isAdmin()) {
         .btn-submit {
             width: 100%;
             padding: 14px;
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
             color: white;
             border: none;
             border-radius: 8px;
@@ -103,9 +103,9 @@ if (isAdmin()) {
         }
 
         .alert-success {
-            background: #d1fae5;
-            color: #065f46;
-            border: 1px solid #a7f3d0;
+            background: #dbeafe;
+            color: #0369a1;
+            border: 1px solid #bae6fd;
         }
 
         .info-box {
@@ -144,7 +144,7 @@ if (isAdmin()) {
                 <div id="alert" class="alert"></div>
 
                 <form id="paymentForm" method="POST">
-                    <h3 style="margin-bottom: 20px; color: #059669;">
+                    <h3 style="margin-bottom: 20px; color: #0284c7;">
                         <i class="fas fa-file-invoice"></i>
                         <span data-i18n="payment.tax_data">Data Pajak</span>
                     </h3>
@@ -250,7 +250,7 @@ if (isAdmin()) {
                         </div>
                     </div>
 
-                    <h3 style="margin: 30px 0 20px; color: #059669;">
+                    <h3 style="margin: 30px 0 20px; color: #0284c7;">
                         <i class="fas fa-credit-card"></i> <span data-i18n="payment.payment_method_title">Metode Pembayaran</span>
                     </h3>
 
@@ -272,7 +272,7 @@ if (isAdmin()) {
 
                     <div class="form-group" style="background: #f9fafb; padding: 15px; border-radius: 8px;">
                         <h4 style="margin-bottom: 10px;" data-i18n="payment.total_payment">Total Pembayaran:</h4>
-                        <h2 id="total_display" style="color: #059669;">Rp 0</h2>
+                        <h2 id="total_display" style="color: #0284c7;">Rp 0</h2>
                         <input type="hidden" id="total_bayar" name="total_bayar" value="0">
                     </div>
 

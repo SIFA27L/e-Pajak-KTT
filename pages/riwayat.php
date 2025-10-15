@@ -85,7 +85,7 @@ $payments = $stmt->fetchAll();
         }
 
         .btn-download {
-            background: #10b981;
+            background: #0ea5e9;
             color: white;
         }
 

@@ -33,7 +33,7 @@ $jenisPajak = $stmt->fetchAll();
             border-radius: 15px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border-left: 5px solid #10b981;
+            border-left: 5px solid #0ea5e9;
         }
 
         .pajak-card:hover {
@@ -51,7 +51,7 @@ $jenisPajak = $stmt->fetchAll();
         .pajak-code {
             font-size: 1.3rem;
             font-weight: 700;
-            color: #059669;
+            color: #0284c7;
         }
 
         .pajak-title {
@@ -79,7 +79,7 @@ $jenisPajak = $stmt->fetchAll();
         .pajak-rate {
             font-size: 1.5rem;
             font-weight: 700;
-            color: #10b981;
+            color: #0ea5e9;
         }
 
         .info-section {
@@ -91,7 +91,7 @@ $jenisPajak = $stmt->fetchAll();
         }
 
         .info-section h3 {
-            color: #059669;
+            color: #0284c7;
             margin-bottom: 15px;
             display: flex;
             align-items: center;
@@ -116,7 +116,7 @@ $jenisPajak = $stmt->fetchAll();
         }
 
         .info-section li i {
-            color: #10b981;
+            color: #0ea5e9;
             margin-top: 3px;
         }
 
@@ -168,13 +168,13 @@ $jenisPajak = $stmt->fetchAll();
         }
 
         .accordion-title strong {
-            color: #059669;
+            color: #0284c7;
             font-size: 1.1rem;
             min-width: 80px;
         }
 
         .accordion-icon {
-            color: #059669;
+            color: #0284c7;
             font-size: 1.2rem;
             transition: transform 0.3s ease;
         }
@@ -202,7 +202,7 @@ $jenisPajak = $stmt->fetchAll();
         }
 
         .accordion-detail h4 {
-            color: #059669;
+            color: #0284c7;
             font-size: 1rem;
             margin: 15px 0 10px 0;
             display: flex;
@@ -225,7 +225,7 @@ $jenisPajak = $stmt->fetchAll();
             content: "→";
             position: absolute;
             left: 0;
-            color: #10b981;
+            color: #0ea5e9;
             font-weight: bold;
         }
 
