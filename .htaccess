@@ -17,6 +17,10 @@
 
 # Security Headers
 <IfModule mod_headers.c>
+    # Remove Server Signature
+    Header unset Server
+    Header always unset X-Powered-By
+    
     # XSS Protection
     Header set X-XSS-Protection "1; mode=block"
     
@@ -28,14 +32,38 @@
     
     # Referrer Policy
     Header set Referrer-Policy "strict-origin-when-cross-origin"
+    
+    # Content Security Policy (adjust as needed)
+    Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self';"
+    
+    # Strict Transport Security (if using HTTPS)
+    # Header set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
 </IfModule>
 
 # PHP Security Settings
 <IfModule mod_php7.c>
+    # Hide PHP errors from users
     php_flag display_errors Off
+    php_flag display_startup_errors Off
     php_flag log_errors On
     php_value error_log logs/php_errors.log
+    
+    # Hide PHP version
     php_flag expose_php Off
+    
+    # Disable dangerous functions
+    php_value disable_functions "exec,passthru,shell_exec,system,proc_open,popen,curl_exec,curl_multi_exec,parse_ini_file,show_source"
+    
+    # Session security
+    php_value session.cookie_httponly 1
+    php_value session.cookie_secure 1
+    php_value session.use_only_cookies 1
+    
+    # Upload limits
+    php_value upload_max_filesize 10M
+    php_value post_max_size 10M
+    php_value max_execution_time 300
+    php_value max_input_time 300
 </IfModule>
 
 # Protect sensitive files
@@ -44,10 +72,27 @@
     Deny from all
 </FilesMatch>
 
-<FilesMatch "\.(sql|md|git|gitignore|env)$">
+<FilesMatch "\.(sql|md|git|gitignore|env|ini|log|sh|bak|backup|zip|rar)$">
     Order allow,deny
     Deny from all
 </FilesMatch>
+
+# Block access to specific files
+<Files "database.php">
+    Order allow,deny
+    Deny from all
+</Files>
+
+<Files "config.php">
+    Order allow,deny
+    Deny from all
+</Files>
+
+# Protect README and documentation
+<Files ~ "^(README|TESTING|CHANGELOG|LICENSE)">
+    Order allow,deny
+    Deny from all
+</Files>
 
 # Protect config directory
 <DirectoryMatch "config">

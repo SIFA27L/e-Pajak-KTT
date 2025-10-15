@@ -1,0 +1,21 @@
+# robots.txt for e-Pajak KTT Indonesia
+# Prevent search engines from indexing sensitive areas
+
+User-agent: *
+Disallow: /config/
+Disallow: /includes/
+Disallow: /api/
+Disallow: /auth/logout.php
+Disallow: /uploads/
+Disallow: /*.sql$
+Disallow: /*.log$
+Disallow: /*.md$
+
+# Allow main pages
+Allow: /
+Allow: /auth/login.php
+Allow: /auth/register.php
+Allow: /assets/
+
+# Sitemap (optional - create if needed)
+# Sitemap: https://yourdomain.com/sitemap.xml

@@ -1,9 +1,23 @@
 <?php
 // Database Configuration for KTT Indonesia Tax Payment System
-define('DB_HOST', 'localhost');
-define('DB_USER', 'root');
-define('DB_PASS', '');
-define('DB_NAME', 'epajak_ktt');
+// Use environment variables in production for better security
+
+// Check if running on production server
+$isProduction = (isset($_SERVER['SERVER_NAME']) && $_SERVER['SERVER_NAME'] !== 'localhost');
+
+if ($isProduction) {
+    // Production database config (use environment variables)
+    define('DB_HOST', getenv('DB_HOST') ?: 'localhost');
+    define('DB_USER', getenv('DB_USER') ?: 'root');
+    define('DB_PASS', getenv('DB_PASS') ?: '');
+    define('DB_NAME', getenv('DB_NAME') ?: 'epajak_ktt');
+} else {
+    // Development/Local database config
+    define('DB_HOST', 'localhost');
+    define('DB_USER', 'root');
+    define('DB_PASS', '');
+    define('DB_NAME', 'epajak_ktt');
+}
 
 class Database {
     private $host = DB_HOST;
