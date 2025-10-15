@@ -73,6 +73,8 @@ header('Content-Type: text/html; charset=utf-8');
 <html lang="id">
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
+    <link rel="shortcut icon" type="image/svg+xml" href="../assets/images/favicon.svg">
     <title><?php echo $title; ?></title>
     <style>
         body {
