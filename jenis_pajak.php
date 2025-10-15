@@ -174,7 +174,7 @@ $jenisPajak = $stmt->fetchAll();
                             <span style="color: #6b7280; font-size: 0.9rem;" data-i18n="tax.as_regulated">Sesuai Ketentuan</span>
                             <?php endif; ?>
                         </div>
-                        <button class="btn-primary" onclick="window.location.href='pembayaran.php'">
+                        <button class="btn-primary" onclick="window.location.href='pembayaran.php?tax_id=<?php echo $pajak['id']; ?>'">
                             <i class="fas fa-arrow-right"></i> <span data-i18n="tax.pay_now">Bayar</span>
                         </button>
                     </div>

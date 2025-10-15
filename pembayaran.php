@@ -276,6 +276,23 @@ if (isAdmin()) {
     </div>
 
     <script>
+        // Auto-select jenis pajak from URL parameter
+        window.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const taxId = urlParams.get('tax_id');
+            
+            if (taxId) {
+                const jenisPajakSelect = document.getElementById('jenis_pajak_id');
+                if (jenisPajakSelect) {
+                    jenisPajakSelect.value = taxId;
+                    
+                    // Trigger change event if needed for any dependent logic
+                    const event = new Event('change');
+                    jenisPajakSelect.dispatchEvent(event);
+                }
+            }
+        });
+
         // Admin payment for selection handler
         <?php if (isAdmin()): ?>
         const paymentForSelect = document.getElementById('payment_for');
